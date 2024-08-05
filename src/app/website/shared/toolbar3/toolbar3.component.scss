@@ -1,0 +1,197 @@
+/* Top Bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px;
+  background: #9d2727;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.top-bar .social-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.top-bar .social-links li {
+  margin: 0 5px;
+}
+
+.top-bar a {
+  color: #fff;
+}
+
+.top-bar a:hover {
+  color: #222;
+}
+
+/* Mainbar (Navbar) */
+.mainbar {
+  background-color: #fff;
+  padding: 0.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.navbar-brand img {
+  // width: 320px;
+  max-height: 50px;
+}
+
+.logo-small {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .logo-large {
+    display: none;
+  }
+
+  .logo-small {
+    display: inline-block;
+  }
+
+  .navbar-brand img {
+    width: 200px;
+  }
+}
+
+.contact-button {
+  background-color: #9d2727;
+  color: #fff;
+  font-size: 14px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+  background-color: #c53c3c;
+}
+
+.navbar-toggler {
+  border: none;
+  font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close {
+  box-shadow: none;
+  outline: none;
+}
+
+.nav-link {
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #000;
+}
+
+@media (min-width: 991px) {
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #9d2727;
+    visibility: hidden;
+    transition: width 0.3s ease-in-out;
+  }
+  .nav-link:hover::before, .nav-link.active::before {
+    width: 100%;
+    visibility: visible;
+  }
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  //margin-top: 2px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.25rem;
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 1rem;
+  }
+
+  .navbar-toggler {
+    margin-left: auto;
+  }
+}
+
+/* Estilo para reducir el tamaño de los encabezados del menú desplegable */
+.custom-dropdown-menu .dropdown-header {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #000; /* Cambia el color si es necesario */
+  white-space: nowrap; /* Evita que el texto se desborde */
+  border-bottom: 1px solid #ddd; /* Añadir una línea inferior para destacar los encabezados */
+}
+
+/* Estilo para cambiar el color de hover */
+.custom-dropdown-menu .dropdown-item:hover {
+  background-color: #9d2727;
+  color: #fff;
+}
+
+/* Alinear el menú desplegable para que el enlace <a> esté centrado */
+.custom-dropdown-menu {
+  transform: translateX(-50%);
+  left: 50%;
+  min-width: 600px; /* Asegura que el menú tenga suficiente ancho */
+  padding: 10px; /* Añadir padding alrededor del menú */
+  box-sizing: border-box; /* Asegura que el padding no expanda el ancho del menú */
+  transition: visibility 0.2s, opacity 0.2s linear;
+  visibility: hidden;
+  opacity: 0;
+  display: block; /* Asegura que el menú esté en el flujo del documento */
+  position: absolute;
+}
+
+/* Ajustar el ancho del menú desplegable para que sea más amplio */
+.custom-dropdown-menu .container {
+  width: 100%;
+  max-width: none;
+  padding: 0; /* Elimina el padding del contenedor */
+}
+
+/* Asegura que las columnas no se corten */
+.custom-dropdown-menu .row {
+  flex-wrap: nowrap; /* Evita que las columnas se envuelvan */
+}
+
+/* Ajuste de padding y margen para evitar el corte de elementos */
+.custom-dropdown-menu .col-md-4 {
+  padding: 0.5rem;
+}
+
+/* Centrar el enlace "Todos nuestros cursos" */
+.custom-dropdown-menu .dropdown-item.text-center {
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+

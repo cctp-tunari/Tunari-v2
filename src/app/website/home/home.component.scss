@@ -1,0 +1,227 @@
+// .header {
+//   width: 100%;
+//   height: 90%;
+//   // background-color: lightblue;
+//   background: rgb(36, 0, 0);
+//   background: linear-gradient(180deg, rgba(36, 0, 0, 1) 0%, rgba(121, 9, 9, 1) 35%, rgba(255, 0, 0, 0.26094187675070024) 100%);
+// }
+
+// .background-img {
+//   //background: url("../../../assets/portada_principal.png") no-repeat center;
+//   //background-size: cover;
+//   //width: 100%;
+//   //height: 100%;
+// }
+
+
+@keyframes vibrate {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(0, -5px); }
+  50% { transform: translate(0, -10px); }
+  75% { transform: translate(0, -5px); } 
+  100% { transform: translate(0, 0); }
+}
+.section {
+  background-color: #59172e;
+  padding: 5em 0 5em 0;
+
+  .icon-large {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    color: #59172e;
+    transition: animation 0.5s;
+    cursor: pointer;
+  }
+
+  .icon-large:hover {
+    animation: vibrate 0.1s linear infinite;
+    animation-duration: 0.5s;
+  }
+
+  .card {
+    background-color: #cd819b;
+    color: white;
+    padding: 1em;
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .row  div[class*='col-'] {
+    display: flex;
+  }
+}
+
+// Div info
+.container-info {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+
+  h3 {
+    color: white;
+    text-align: center;
+    padding-bottom: 3em;
+  }
+
+  .text-content {
+    p {
+      color: #ffcece;
+    }
+  }
+
+}
+
+.my-5 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 15em;
+  // background-image: radial-gradient(circle, #b73838, #892a34, #5b1f2a, #30151b, #000000);
+  background-image: radial-gradient(circle, #600f0f, #4b0e14, #350d13, #20090e, #000000);
+}
+
+.container-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgb(0 0 0 / 72%);
+  z-index: 1;
+}
+
+.row {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.video-container {
+  height: 35em;
+  padding-top: 3em;
+}
+
+
+//header image
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 55%);
+  z-index: 1;
+}
+
+.header {
+  position: relative;
+
+  img {
+    display: block;
+    width: 100%;
+    max-height: 90vh;
+  }
+}
+
+.header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+
+  img {
+    max-width: 450px;
+    z-index: 10;
+  }
+}
+
+.header .overlay .logo {
+  opacity: 0;
+  animation: fadeIn 7s forwards;
+}
+
+
+
+
+// section courses
+
+.course-container {
+  // padding: 3em 10em 5em 10em;
+  padding-bottom: 4em;
+  .card {
+    transition: transform 0.3s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    h5 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 2;
+    }
+    .card-body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 1;
+    }
+  }
+}
+
+
+.course-container .card:hover .card-body {
+  opacity: 1;
+}
+
+.course-container .card:hover h5 {
+  opacity: 0;
+}
+
+.course-container .card:hover {
+  transform: scale(1.05);
+}
+
+.course-container h3 {
+  text-align: center;
+  padding-bottom: 2em;
+}

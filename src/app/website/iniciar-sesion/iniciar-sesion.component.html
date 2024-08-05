@@ -1,0 +1,21 @@
+<!-- login.component.html -->
+<div class="header">
+  <img src="../../../assets/cochabamba-portada.jpg" class="img-fluid" alt="">
+  <div class="overlay">
+    <div class="login-container">
+      <h5>Iniciar Sesión</h5>
+      <form (ngSubmit)="onLogin()">
+        <div class="form-group">
+          <label for="username">Usuario</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Iniciar Sesión</button>
+      </form>
+      <p><a href="#">¿Olvidaste tu contraseña?</a></p>
+    </div>
+  </div>
+</div>
