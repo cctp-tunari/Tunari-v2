@@ -35,11 +35,8 @@ body {
     background-size: 100%;
   }
 }
+
 .custom-background {
-  background-image: url('../../../../assets/computacion_background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   width: 100%;
   margin: 0;
   color: white;
@@ -257,7 +254,7 @@ body {
 }
 
 //.course-section {
-//  background-image: url('../../../../assets/portada_cursos.png');
+//  background-image: url('../../../../../public/b_portada_cursos.png');
 //  background-size: contain;
 //  background-repeat: no-repeat;
 //  background-position: center;
