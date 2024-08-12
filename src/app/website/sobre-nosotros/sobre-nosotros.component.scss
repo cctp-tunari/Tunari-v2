@@ -1,136 +1,246 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, #000, #2C6772);
-  color: white;
+
+:root {
+  --color-primary: #800020;
+  --color-secondary: #2C6772;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-light-gray: #f8f9fa;
+  --color-dark-gray: #333333;
 }
 
-.img-fluid.portada {
-  width: 100%;
-  height: auto;
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333333;
+  line-height: 1.6;
 }
 
-.quienes-somos-section {
-  position: relative;
-  width: 100%;
-  height: 75vh; /* Ocupa el 75% de la altura de la página */
-  overflow: hidden;
+.sobre-nosotros-container {
+  background-color: #ffffff;
 }
 
-.background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  //TODO:
-  background: url('../../../../public/cotact_us_main.png') no-repeat center center; 
-  background-attachment: fixed; /* Efecto parallax */
-  background-position: center; /* Centra la imagen de fondo */
-  z-index: 1; /* Asegura que esté detrás del contenido */
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Color negro semi-transparente */
-  z-index: 2; /* Asegura que esté sobre la imagen de fondo */
-}
-
-.content {
-  position: relative;
-  z-index: 3; /* Asegura que esté sobre el overlay */
-  display: flex;
-  flex-direction: column; /* Ajusta los elementos en una columna */
-  justify-content: center;
-  align-items: center;
+.section-title-dark {
   text-align: center;
-  color: white;
-  //padding: 1.5rem; /* Añadido padding para evitar que el texto esté pegado a los bordes */
-  opacity: 1; /* Asegúrate de que el contenido sea visible */
+  color: #2C6772;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  position: relative;
+  padding-bottom: 10px;
 }
 
-.content h1 {
-  margin-bottom: 1rem; /* Añade un margen inferior para separar el título del texto */
-}
-.content p {
-  padding: 10rem; /* Añade un margen inferior para separar el título del texto */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-.mision-section {
-  margin-top: 2rem; /* Espacio superior para separar de la sección anterior */
-  padding: 2rem 0; /* Añadido padding para espacio interno */
+.section-title-dark::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background-color: #2C6772;
 }
 
-.mision-content, .mision-image {
-  opacity: 0; /* Oculta inicialmente */
-  transform: translateX(-150px); /* Mueve hacia la izquierda para el efecto */
-  transition: opacity 6s ease-in-out, transform 2s ease-in-out;
-  /* Ajusta según el ancho de la ventana */
+.section-title-light {
+  text-align: center;
+  color: #f8f9fa;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  position: relative;
+  padding-bottom: 10px;
 }
 
-.mision-content {
+.section-title-light::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background-color: #f8f9fa;
+}
+
+/* Quienes Somos Section */
+.quienes-somos-section {
+  padding: 4rem 0;
+  background-color: #efefef;
+}
+
+.content-wrapper {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 2rem; /* Margen interno para el texto */
+  gap: 2rem;
+}
+
+.text-content {
+  flex: 1;
+}
+
+.image-content {
+  flex: 1;
+}
+
+.image-content img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Misión y Visión Section */
+.mision-vision-section {
+  padding: 4rem 0;
+  background-color: #ffffff;
+}
+
+.card {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 2rem;
   height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid #800020;
 }
 
-.mision-image {
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.card-title {
+  color: #800020;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+/* Nuestros Ambientes Section */
+.ambientes-section {
+  padding: 4rem 0;
+  background-color: #800020;
+  color: #ffffff;
+}
+
+.ambiente-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.ambiente-item {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ambiente-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.ambiente-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.ambiente-item h3 {
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #000000;
+}
+
+/* Botón personalizado */
+.btn-custom {
+  background-color: #800020;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #2C6772;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .image-content {
+    order: -1;
+  }
+
+  .card {
+    margin-bottom: 2rem;
+  }
+}
+
+
+
+
+/* Estilos para la sección de Contacto Rápido y Redes Sociales */
+.contacto-redes-section {
+  padding: 4rem 0;
+  background-color: #2C6772;
+  color: #ffffff;
+}
+
+.contacto-rapido {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.btn-custom {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #800020;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #ffffff;
+  color: #800020;
+}
+
+.redes-sociales {
+  text-align: center;
+}
+
+.social-icons {
   display: flex;
   justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #2C6772;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-.mision-image img {
-  width: 80%;
-  height: auto;
+.social-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.animate {
-  animation: fadeInAndSlideIn 6s forwards;
-}
+.social-icon.facebook:hover { background-color: #3b5998; color: #f8f9fa; }
+.social-icon.instagram:hover { background-color: #e1306c; color: #f8f9fa; }
+.social-icon.tiktok:hover { background-color: #000000; color: #f8f9fa; }
+.social-icon.youtube:hover { background-color: #e30404; color: #ffffff; }
 
-@keyframes fadeInAndSlideIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.mision-image.animate {
-  animation: fadeInAndSlideInReverse 6s forwards;
-}
-
-@keyframes fadeInAndSlideInReverse {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+/* Responsive Design */
