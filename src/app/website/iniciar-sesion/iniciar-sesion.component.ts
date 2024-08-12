@@ -31,7 +31,8 @@ export class IniciarSesionComponent {
     console.log('click ', this.email, this.password)
     this.userService.login(this.email,this.password)
       .then(response => {
-        console.log("success");
+        this.userService.setAuthentication(true);
+        this.userService.emitEvent(true);
         this.router.navigate(['/admin']);
 
       })
