@@ -1,0 +1,92 @@
+// Contenedor general
+.container-fluid {
+  padding: 0;
+  margin: 0;
+}
+
+// Imagen de portada y texto
+.position-relative {
+  position: relative;
+}
+
+.img-fluid {
+  width: 100%;
+  height: auto;
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, #000, #800020);
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 0.5rem;
+  font-size: 2.5rem;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: white;
+    margin: 0.5rem auto;
+  }
+}
+
+// Estilo de los videos y las tarjetas
+.card {
+  border: 1px solid #2C6772;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-body {
+    padding: 1.5rem;
+    //background-color: #f8f9fa;
+    background: linear-gradient(to right, #000, #800020);
+
+    .card-title {
+      color: #e7e7e7;
+      font-size: 1.75rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .card-text {
+      color: #e7e7e7;
+    }
+  }
+}
+
+.embed-responsive {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%; // Aspect ratio 16:9
+  }
+
+  .embed-responsive-item {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
