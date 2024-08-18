@@ -17,7 +17,38 @@ import { Router } from '@angular/router';
 })
 
 export class HomeComponent implements OnInit {
-  
+  courses = [
+    {
+      title: 'Gastronomía',
+      description: 'Aprende a cocinar platos de alta calidad...',
+      imageUrl: 'path-to-image1.jpg',
+      isNew: true,
+      isPopular: false,
+      price: 120
+    },
+    {
+      title: 'Coctelería',
+      description: 'Descubre las técnicas de los mejores bartenders...',
+      imageUrl: 'path-to-image2.jpg',
+      isNew: false,
+      isPopular: true,
+      price: 150
+    },
+    {
+      title: 'Reparación de Celulares',
+      description: 'Conviértete en un experto en reparación de celulares...',
+      imageUrl: 'path-to-image3.jpg',
+      isNew: false,
+      isPopular: false,
+      price: 'Gratis',
+    }
+  ];
+  navigateToCourse(link: string): void {
+    // Navegar a la página del curso
+    console.log(`Navegando a: ${link}`);
+  }
+
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
