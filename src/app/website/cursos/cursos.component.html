@@ -1,44 +1,190 @@
-<body>
-<!--  <section class="background-img">-->
-<img src="../../../assets/portada_cursos2.png" class="img-fluid" alt="">
+<div class="courses-section">
+  <h1>Cursos Disponibles</h1>
 
-<main class="content">
-  <div class="main-content">
-    <!-- Aquí va tu contenido principal -->
-    <p>Bienvenido a la página cursos de Tunari.</p>
-    <span>TEST</span>
-
-
-
-
-
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary bg-image">
-      <div class="col-md-6 p-lg-5 mx-auto my-5">
-        <h1 class="display-3 fw-bold">Designed for engineers</h1>
-        <h3 class="fw-normal text-muted mb-3">Build anything you want with Aperture</h3>
-        <div class="d-flex gap-3 justify-content-center lead fw-normal">
-          <a class="icon-link" href="#">
-            Learn more
-            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-          </a>
-          <a class="icon-link" href="#">
-            Buy
-            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-          </a>
+  <div class="category">
+    <h2>Cursos sincrónicos presenciales</h2>
+    <div class="description-box">
+      Los cursos sincrónicos se imparten en nuestro ambientes, con instructores altamente capacitados.
+      Ideal para quienes prefieren una experiencia de aprendizaje más interactiva y personalizada.
+    </div>
+    <div class="container course-container">
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card" style="background-image: url('b_gastronomia_background.png')"
+               (click)="navigateTo('cursos/gastronomia2')">
+            <h5 class="card-title">Gastronomía</h5>
+            <div class="card-body">
+              <p>Formamos a jóvenes y señoritas en el mundo de la Gastronomía donde aprenderán a elaborar platos de Cocina
+                Nacional, Internacional, Repostería, Panadería y Pastelería, desarrollando conocimientos para el diseño de
+                menú en una amplia variedad de recetas para instituciones.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card" style="background-image: url('b_cocteleria_background.png')"
+               (click)="navigateTo('cursos/cocteleria')">
+            <h5 class="card-title">Coctelería</h5>
+            <div class="card-body">
+              <p>Formamos a jóvenes y señoritas en el mundo de la Coctelería Bartender, donde aprenderán las diferentes
+                técnicas de elaboración y decoración de tragos y las principales técnicas de coctelería detrás de barra
+                para que puedan desenvolverse profesionalmente tanto a nivel local como nacional. A su vez, durante el
+                curso aprenderán el protocolo de atención para brindar un servicio de coctelería en eventos.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card" style="background-image: url('b_reparacion_celulares_background.png')"
+               (click)="navigateTo('cursos/reparacion-de-celulares')">
+            <h5 class="card-title">Reparación de Celulares</h5>
+            <div class="card-body">
+              <p>Formamos a futuros jóvenes, técnicos especialistas en resolver problemas de los diferentes tipos de
+                celulares, iPhone y tablets a requerimiento y solicitud del cliente. Teniendo un amplio conocimiento en
+                manejo de herramientas, con habilidad y destreza en el manejo de hardware y software.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card" style="background-image: url('b_peluqueria_background.png')"
+               (click)="navigateTo('cursos/peluqueria')">
+            <h5 class="card-title">Estilismo en Peluquería</h5>
+            <div class="card-body">
+              <p>Nuestros estudiantes estarán capacitados para realizar técnicas de belleza aplicando diseños de acuerdo a
+                la imagen de las personas. Proyectando un cambio de imagen favorable para el/la cliente, trabajando
+                siempre en condiciones de calidad, seguridad e higiene.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card" style="background-image: url('b_atencion_cliente_background.png')"
+               (click)="navigateTo('cursos/atencion-al-cliente')">
+            <h5 class="card-title">Atención al Cliente</h5>
+            <div class="card-body">
+              <p>En este curso desarrollamos en los participantes principios básicos y fundamentales de atención al cliente, con el fin
+                de brindar soluciones frente a consultas, reclamos, del cliente al momento de realizar alguna compra o
+                venta.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card" style="background-image: url('b_diseno_background.png')"
+               (click)="navigateTo('cursos/diseño-dimensional')">
+            <h5 class="card-title">Diseño Dimensional</h5>
+            <div class="card-body">
+              <p>El estudiante de Diseño dimensional Gráfico Publicitario conocerá y aplicará herramientas de diseño
+                publicitario y diseños 3D, para desarrollar e impulsar la marca de una organización o empresa, empleando
+                programas de última generación requerido en ambientes de trabajo.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card" style="background-image: url('b_computacion_background.png')"
+               (click)="navigateTo('cursos/computacion')">
+            <h5 class="card-title">Office (Computación)</h5>
+            <div class="card-body">
+              <p>El estudiante de Computación estará capacitado para desarrollar herramientas tecnológicas de alto nivel
+                mediante programas de ofimática para dar solución a los requerimientos empresariales.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card" style="background-image: url('b_marketing_digital_background.png')"
+               (click)="navigateTo('cursos/marketing-digital')">
+            <h5 class="card-title">Marketing Digital</h5>
+            <div class="card-body">
+              <p>El curso de compras y ventas online (marketing digital) a través de las redes sociales contribuirá de gran manera a las empresas y negocios a
+                realizar que sus negocios sean más productivos.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-
-
-
-
-
   </div>
-</main>
+
+  <div class="category">
+    <h2>Cursos Asíncronos</h2>
+    <div class="description-box">
+      Los cursos asincrónicos te permiten aprender a tu propio ritmo.
+      Accede a materiales de estudio grabados, ejercicios y evaluaciones en cualquier momento.
+      Perfecto para quienes necesitan flexibilidad en su horario de estudio.
+    </div>
+    <div class="container course-container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 mb-4">
+          <div class="card" style="background-image: url('b_gastronomia_background.png')"
+               (click)="navigateTo('cursos/gastronomia2')">
+            <h5 class="card-title">Gastronomía</h5>
+            <div class="card-body">
+              <p>Formamos a jóvenes y señoritas en el mundo de la Gastronomía donde aprenderán a elaborar platos de Cocina
+                Nacional, Internacional, Repostería, Panadería y Pastelería, desarrollando conocimientos para el diseño de
+                menú en una amplia variedad de recetas para instituciones.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card" style="background-image: url('b_cocteleria_background.png')"
+               (click)="navigateTo('cursos/cocteleria')">
+            <h5 class="card-title">Coctelería</h5>
+            <div class="card-body">
+              <p>Formamos a jóvenes y señoritas en el mundo de la Coctelería Bartender, donde aprenderán las diferentes
+                técnicas de elaboración y decoración de tragos y las principales técnicas de coctelería detrás de barra
+                para que puedan desenvolverse profesionalmente tanto a nivel local como nacional. A su vez, durante el
+                curso aprenderán el protocolo de atención para brindar un servicio de coctelería en eventos.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card" style="background-image: url('b_reparacion_celulares_background.png')"
+               (click)="navigateTo('cursos/reparacion-de-celulares')">
+            <h5 class="card-title">Reparación de Celulares</h5>
+            <div class="card-body">
+              <p>Formamos a futuros jóvenes, técnicos especialistas en resolver problemas de los diferentes tipos de
+                celulares, iPhone y tablets a requerimiento y solicitud del cliente. Teniendo un amplio conocimiento en
+                manejo de herramientas, con habilidad y destreza en el manejo de hardware y software.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category justify-content-center align-items-center">
+    <h2>Recetas culinarias</h2>
+    <div class="description-box">
+      Compre y acceda a recetas culinarias exclusivas creadas por expertos.
+    </div>
+    <div class="container course-container">
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
+          <div class="card" style="background-image: url('b_gastronomia_background.png')"
+               (click)="navigateTo('cursos/gastronomia2')">
+            <h5 class="card-title">Gastronomía</h5>
+            <div class="card-body">
+              <p>Formamos a jóvenes y señoritas en el mundo de la Gastronomía donde aprenderán a elaborar platos de Cocina
+                Nacional, Internacional, Repostería, Panadería y Pastelería, desarrollando conocimientos para el diseño de
+                menú en una amplia variedad de recetas para instituciones.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card" style="background-image: url('b_reparacion_celulares_background.png'); position: relative;"
+               (click)="navigateTo('cursos/reparacion-de-celulares')">
+
+            <!-- Etiqueta diagonal de "Gratis" -->
+            <div class="ribbon-wrapper">
+              <div class="ribbon">Gratis</div>
+            </div>
 
 
+            <h5 class="card-title">Reparación de Celulares</h5>
+            <div class="card-body">
+              <p>Formamos a futuros jóvenes, técnicos especialistas en resolver problemas de los diferentes tipos de
+                celulares, iPhone y tablets a requerimiento y solicitud del cliente. Teniendo un amplio conocimiento en
+                manejo de herramientas, con habilidad y destreza en el manejo de hardware y software.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!--    <app-footer></app-footer>-->
-
-</body>
