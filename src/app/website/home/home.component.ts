@@ -43,17 +43,10 @@ export class HomeComponent implements OnInit {
       price: 'Gratis',
     }
   ];
-  navigateToCourse(link: string): void {
-    // Navegar a la página del curso
-    console.log(`Navegando a: ${link}`);
-  }
-
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   navigateTo(course: string) {
     this.router.navigate([course]);

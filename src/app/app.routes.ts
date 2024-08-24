@@ -18,6 +18,8 @@ import { ReparacionCelularesComponent } from './website/cursos/reparacion-celula
 import { IniciarSesionComponent } from './website/iniciar-sesion/iniciar-sesion.component';
 import { MainAdminPageComponent } from './admin/main-admin-page/main-admin-page.component';
 import { ContactUsComponent } from './website/contact-us/contact-us.component';
+import {GastronomiaVirtualComponent} from "./website/cursos/gastronomia-virtual/gastronomia-virtual.component";
+import {RecetaFiletMignonComponent} from "./website/Recetas/receta-filet-mignon/receta-filet-mignon.component";
 
 
 export const routes: Routes = [
@@ -32,6 +34,7 @@ export const routes: Routes = [
     { path: 'actividades',        component: ActividadesComponent },
     { path: 'cursos/gastronomia',        component: GastronomiaComponent },
     { path: 'cursos/gastronomia2',        component: Gastronomia2Component },
+    { path: 'cursos/gastronomia-virtual',        component: GastronomiaVirtualComponent },
     { path: 'cursos/atencion-al-cliente',        component: AtencionAlClienteComponent },
     { path: 'cursos/cocteleria',        component: CocteleriaComponent },
     { path: 'cursos/computacion',        component: ComputacionComponent },
@@ -39,6 +42,7 @@ export const routes: Routes = [
     { path: 'cursos/marketing-digital',        component: MarketingDigitalComponent },
     { path: 'cursos/peluqueria',        component: PeluqueriaComponent },
     { path: 'cursos/reparacion-de-celulares',        component: ReparacionCelularesComponent },
+    { path: 'recetas/filet-mignon',        component:  RecetaFiletMignonComponent},
     { path: 'iniciar-sesion',        component: IniciarSesionComponent },
     { path: 'admin',        component: MainAdminPageComponent }
 ];
