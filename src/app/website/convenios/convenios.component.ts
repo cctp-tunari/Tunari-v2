@@ -11,6 +11,6 @@ import { Component } from '@angular/core';
   styleUrl: './convenios.component.scss'
 })
 export class ConveniosComponent {
-  particles = new Array(40);
+  public particles = new Array(40);
 
 }
