@@ -4,6 +4,7 @@ import {FormsModule} from "@angular/forms";
 import { AppComponent } from '../../app.component';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../../services/user.service';
+import { StudentService } from '../../../services/student.service';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -25,7 +26,7 @@ export class IniciarSesionComponent {
 
 
 
-  constructor(private router: Router, private appComponent: AppComponent, private userService: UserService) {}
+  constructor(private router: Router, private appComponent: AppComponent, private userService: UserService, private studentService: StudentService) {}
 
   onLogin() {
     console.log('click ', this.email, this.password)
@@ -42,10 +43,7 @@ export class IniciarSesionComponent {
 
       })
 
-    // Aquí puedes agregar la lógica para validar el formulario y autenticar al usuario
-    // this.appComponent.setLoginStatus(true); // Actualiza el estado de autenticación
-    // // Redirigir a la página de administración
-    // this.router.navigate(['/admin']); // Cambia '/admin' por la ruta a la que quieres navegar
+
   }
 
 
@@ -66,4 +64,33 @@ export class IniciarSesionComponent {
       this.closeAlert();
     }, 4000); 
   }
+
+  test(){
+    
+    let student ={
+      name: "Andres",
+      lastName: "Bustamante"
+    }
+    this.studentService.addStudent(student).subscribe(response=> {
+      console.log(response)
+    })
+  }
+
+
+  list() {
+    this.studentService.getAllStudents().subscribe(response=> {
+      console.log(response)
+    })
+  } 
+  get() {
+
+  } 
+  update() {
+
+  } 
+  delete() {
+
+  } 
 }
+
+
