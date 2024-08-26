@@ -1,0 +1,48 @@
+.btn-contact {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .btn-contact i {
+    font-size: 28px;
+  }
+  
+  .btn-contact:hover {
+    transform: scale(1.1);
+    background-color: #1EBB60;
+  }
+  
+  .btn-contact::after {
+    content: '¡Chatea con nosotros!';
+    position: absolute;
+    bottom: 70px;
+    right: 50%;
+    transform: translateX(50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .btn-contact:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+  
