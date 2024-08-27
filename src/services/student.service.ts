@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 interface Student {
   id?: string;
   name: string;
-  lastName: string;
+  message: string;
+  contacted: string;
 }
 
 @Injectable({

@@ -68,8 +68,9 @@ export class IniciarSesionComponent {
   test(){
     
     let student ={
-      name: "Andres",
-      lastName: "Bustamante"
+      name: "Juan",
+      message: "Quiero saber mas sobre las clases",
+      contacted: "false"
     }
     this.studentService.addStudent(student).subscribe(response=> {
       console.log(response)
