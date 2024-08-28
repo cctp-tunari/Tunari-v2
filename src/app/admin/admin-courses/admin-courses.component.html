@@ -1,0 +1,129 @@
+<div class="dashboard-content container-fluid">
+  <button class="btn btn-primary" (click)="openAddModal()">Añadir Curso</button>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+<!--        <th>ID</th>-->
+        <th>Nombre</th>
+        <th>Versión</th>
+        <th>Fecha de Inicio</th>
+        <th>Información</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let course of courses">
+<!--        <td>{{ course.id }}</td>-->
+        <td>{{ course.name }}</td>
+        <td>{{ course.version }}</td>
+        <td>{{ course.start_date }}</td>
+        <td>{{ course.info }}</td>
+        <td>{{ course.status }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="openEditModal(course)">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteCourse(course)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+<!--          <button class="btn btn-sm btn-success"> &lt;!&ndash;(click)="enrollStudent(student)">&ndash;&gt;-->
+<!--            <i class="fas fa-user-plus"></i> Inscribir-->
+<!--          </button>-->
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal fade" id="editCourseModal" tabindex="-1" aria-labelledby="editCourseModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editCourseModalLabel">Editar Curso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="mb-3">
+            <label for="course_name" class="form-label">Nombre</label>
+            <input type="text" id="course_name" name="course_name" class="form-control" [(ngModel)]="selectedCourse.name" required>
+          </div>
+          <div class="mb-3">
+            <label for="course_version" class="form-label">Version</label>
+            <input type="text" id="course_version" name="course_version" class="form-control" [(ngModel)]="selectedCourse.version" required>
+          </div>
+          <div class="mb-3">
+            <label for="course_start_date" class="form-label">Fecha de inicio</label>
+            <input type="date" id="course_start_date" name="course_start_date" class="form-control" [(ngModel)]="selectedCourse.start_date" required>
+          </div>
+          <div class="mb-3">
+            <label for="course_info" class="form-label">Información</label>
+            <textarea id="course_info" name="course_version" class="form-control" [(ngModel)]="selectedCourse.info" rows="5" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="course_status" class="form-label">Estado</label>
+            <input type="text" id="course_status" name="course_status" class="form-control" [(ngModel)]="selectedCourse.status" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="updateCourse()">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--add course modal-->
+<div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addCourseModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addCourseModalLabel">Añadir Curso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="course_name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="add_course_name" [(ngModel)]="newCourse.name" name="course_name">
+          </div>
+          <div class="mb-3">
+            <label for="course_version" class="form-label">Version</label>
+            <input type="text" class="form-control" id="add_course_version" [(ngModel)]="newCourse.version" name="course_version">
+          </div>
+          <div class="mb-3">
+            <label for="course_start_date" class="form-label">Fecha de inicio</label>
+            <input type="date" class="form-control" id="add_course_start_date" [(ngModel)]="newCourse.start_date" name="course_start_date">
+          </div>
+          <div class="mb-3">
+            <label for="course_info" class="form-label">Información</label>
+            <textarea class="form-control" id="add_course_info" [(ngModel)]="newCourse.info" name="course_info"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="course_status" class="form-label">Estado</label>
+            <input type="text" class="form-control" id="add_course_status" [(ngModel)]="newCourse.status" name="course_status">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="addCourse()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast {{ toastClass }}" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">{{ toastTitle }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      {{ toastMessage }}
+    </div>
+  </div>
+</div>

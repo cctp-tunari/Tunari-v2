@@ -1,0 +1,186 @@
+<div class="dashboard-content container-fluid">
+  <button class="btn btn-primary" (click)="openAddModal()">Añadir Prospecto</button>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+        <th>Mensaje</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let person of persons">
+        <td>{{ person.id }}</td>
+        <td>{{ person.name }}</td>
+        <td>{{ person.phone }}</td>
+        <td>{{ person.email }}</td>
+        <td>{{ person.message }}</td>
+        <td>
+          <span [ngClass]="person.contacted === true ? 'text-success' : 'text-danger'">
+            {{ person.contacted === true ? 'Contactado' : 'Pendiente' }}
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="openEditModal(person)">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deletePerson(person)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+          <button class="btn btn-sm btn-success" (click)="openEnrollModal(person)">
+            <i class="fas fa-user-plus"></i> Inscribir
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal fade" id="editPersonModal" tabindex="-1" aria-labelledby="editPersonModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editPersonModalLabel">Editar Persona</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" id="name" name="name" class="form-control" [(ngModel)]="selectedPerson.name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" class="form-control" [(ngModel)]="selectedPerson.email" required>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Número de teléfono</label>
+            <input type="tel" id="phone" name="phone" class="form-control" [(ngModel)]="selectedPerson.phone" required>
+          </div>
+          <div class="mb-3">
+            <label for="contacted" class="form-label">Contactado</label>
+            <select id="contacted" name="contacted" class="form-select" [(ngModel)]="selectedPerson.contacted" required>
+              <option value="true">Sí</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Email</label>
+            <input type="text" id="message" name="message" class="form-control" [(ngModel)]="selectedPerson.message" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="updatePerson()">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--add Person modal-->
+<div class="modal fade" id="addPersonModal" tabindex="-1" aria-labelledby="addPersonModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addPersonModalLabel">Añadir Prospecto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="add_name" [(ngModel)]="newPerson.name" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Teléfono</label>
+            <input type="tel" class="form-control" id="add_phone" [(ngModel)]="newPerson.phone" name="phone">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="add_email" [(ngModel)]="newPerson.email" name="email">
+          </div>
+          <div class="mb-3">
+            <label for="contacted" class="form-label">Contactado</label>
+            <select class="form-select" id="add_contacted" [(ngModel)]="newPerson.contacted" name="contacted">
+              <option value="false">No</option>
+              <option value="true">Sí</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Mensaje</label>
+            <input type="text" class="form-control" id="add_message" [(ngModel)]="newPerson.message" name="message">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="addPerson()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="enrollPersonModal" tabindex="-1" aria-labelledby="enrollPersonModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="enrollPersonModalLabel">Inscribir Persona a un Curso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #enrollForm="ngForm">
+          <div class="mb-3">
+            <label for="student_name" class="form-label">Nombres</label>
+            <input type="text" id="student_name" name="name" class="form-control" [(ngModel)]="selectedPerson.name" required>
+          </div>
+          <div class="mb-3">
+            <label for="student_last_name" class="form-label">Apellidos</label>
+            <input type="text" id="student_last_name" name="lastName" class="form-control" [(ngModel)]="selectedPerson.lastName" required>
+          </div>
+          <div class="mb-3">
+            <label for="student_ci" class="form-label">Carnet de Identidad</label>
+            <input type="text" id="student_ci" name="identityCard" class="form-control" [(ngModel)]="selectedPerson.ci" required>
+          </div>
+          <div class="mb-3">
+            <label for="student_email" class="form-label">Email</label>
+            <input type="email" id="student_email" name="email" class="form-control" [(ngModel)]="selectedPerson.email" required>
+          </div>
+          <div class="mb-3">
+            <label for="student_phone" class="form-label">Número de teléfono</label>
+            <input type="tel" id="student_phone" name="phone" class="form-control" [(ngModel)]="selectedPerson.phone" required>
+          </div>
+          <div class="mb-3">
+            <label for="courseId" class="form-label">Curso</label>
+            <select class="form-select" [(ngModel)]="selectedCourseId" name="courseId" id="courseId" required>
+              <option *ngFor="let course of courses" [value]="course.id">{{ course.label }}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="addStudent()">Inscribir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast {{ toastClass }}" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">{{ toastTitle }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      {{ toastMessage }}
+    </div>
+  </div>
+</div>
