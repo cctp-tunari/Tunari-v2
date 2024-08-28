@@ -1,8 +1,10 @@
 <div class="dashboard-content container-fluid main-view">
-  <button class="btn btn-primary" (click)="openAddModal()">Añadir Estudiante</button>
+  <div class="m-3">
+    <button class="btn btn-primary btn-custom-add" (click)="openAddModal()">Añadir Estudiante</button>
+  </div>
   <!-- student-list.component.html -->
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped table-custom">
       <thead>
       <tr>
         <th>ID</th>
@@ -22,19 +24,22 @@
         <td>{{ student.email }}</td>
         <td>{{ student.message }}</td>
         <td>
-          <span [ngClass]="student.contacted ? 'text-success' : 'text-danger'">
-            {{ student.contacted ? 'Contactado' : 'Pendiente' }}
+          <span [ngClass]="student.contacted === 'true' ? 'text-success' : 'text-danger'">
+            {{ student.contacted === 'true' ? 'Contactado' : 'Pendiente' }}
           </span>
         </td>
         <td>
-          <button class="btn btn-sm btn-primary" (click)="openEditModal(student)">
+          <button class="btn btn-sm btn-warning me-2" (click)="openEditModal(student)">
             <i class="fas fa-edit"></i>
           </button>
-          <button class="btn btn-sm btn-danger" (click)="deleteStudent(student)">
+          <button class="btn btn-sm btn-danger me-2" (click)="deleteStudent(student)">
             <i class="fas fa-trash-alt"></i>
           </button>
-          <button class="btn btn-sm btn-success"> <!--(click)="enrollStudent(student)">-->
-            <i class="fas fa-user-plus"></i> Inscribir
+          <button class="btn btn-sm btn-success me-2" (click)="goToWhatsApp(student.phone)">
+            <i class="fas bi-whatsapp"></i>
+          </button>
+          <button class="btn btn-sm btn-info me-2"> <!--(click)="enrollStudent(student)">-->
+            <i class="fas fa-user-plus"></i>
           </button>
         </td>
       </tr>
@@ -85,7 +90,7 @@
 </div>
 
 <!--add student modal-->
-<div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+<div class="modal fade modal-custom" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

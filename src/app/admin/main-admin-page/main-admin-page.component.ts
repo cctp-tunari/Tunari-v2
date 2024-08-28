@@ -113,4 +113,13 @@ export class MainAdminPageComponent implements OnInit {
     const toast = new bootstrap.Toast(toastElement!);
     toast.show();
   }
+
+  goToWhatsApp(phone: string) {
+    if (phone) {
+      const whatsappUrl = `https://wa.me/${phone}`;
+      window.open(whatsappUrl, '_blank');
+    } else {
+      this.showToast('', 'Número no disponible.', 'warning');
+    }
+  }
 }
