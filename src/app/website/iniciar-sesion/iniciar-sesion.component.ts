@@ -5,6 +5,7 @@ import { AppComponent } from '../../app.component';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../../services/user.service';
 import { StudentService } from '../../../services/student.service';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -23,27 +24,21 @@ export class IniciarSesionComponent {
   public password: any = "";
   public showAlert = false;
   public message: any;
+  
 
 
 
   constructor(private router: Router, private appComponent: AppComponent, private userService: UserService, private studentService: StudentService) {}
 
   onLogin() {
-    console.log('click ', this.email, this.password)
-    this.userService.login(this.email,this.password)
-      .then(response => {
-        this.userService.setAuthentication(true);
-        this.userService.emitEvent(true);
-        this.router.navigate(['/admin']);
-
+    this.userService.login(this.email, this.password)
+      .then(() => {
+        // this.router.navigate(['/admin']);
       })
       .catch(error => {
         console.log(error);
-        this.openErrorAlert()
-
-      })
-
-
+        this.openErrorAlert();
+      });
   }
 
 

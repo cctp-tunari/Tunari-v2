@@ -22,9 +22,9 @@ import { UserService } from '../services/user.service';
 })
 
 export class AppComponent implements OnInit, OnDestroy {
-  private subscription!: Subscription;
+  // private subscription!: Subscription;
   public title = 'tunari';
-  public isLoggedIn: boolean = false;
+  // public isLoggedIn: boolean = false;
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router, private userService: UserService) {
@@ -42,20 +42,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.subscription = this.userService.eventObservable$.subscribe (data => {
-      this.isLoggedIn = data
-    });
+    // this.subscription = this.userService.eventObservable$.subscribe (data => {
+    //   this.isLoggedIn = data
+    // });
   }
 
 
   ngOnDestroy() {
-    // Desuscribirse para evitar fugas de memoria
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
-
-  // setLoginStatus(status: boolean) {
-  //   this.isLoggedIn = status;
-  // }
 
 
 }

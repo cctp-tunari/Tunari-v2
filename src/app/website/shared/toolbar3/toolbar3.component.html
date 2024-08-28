@@ -62,11 +62,22 @@
               <li class="nav-item">
                 <a class="nav-link" href="/contacto">Contacto</a>
               </li>
+
+              <li class="nav-item">
+                <a class="nav-link" *ngIf="isLoggedIn" href="/admin">Admin</a>
+              </li>
+
+              <li class="nav-item" *ngIf="!isLoggedIn">
+                <a class="nav-link" href="/iniciar-sesion">Iniciar Sección</a>
+              </li>
+              <li class="nav-item" *ngIf="isLoggedIn">
+                <a class="nav-link" (click)="onLogout()" href="/home">Cerrar sesión</a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="d-flex align-items-center">
-            <a href="/iniciar-sesion" class="contact-button me-2">Iniciar Sesión</a>
+            <a href="https://moodle-179565-0.cloudclusters.net/?redirect=0" class="contact-button me-2">Moodle</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

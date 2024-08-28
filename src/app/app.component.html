@@ -1,9 +1,9 @@
 
-<app-toolbar3 *ngIf="!isLoggedIn"></app-toolbar3>
-<app-admin-header *ngIf="isLoggedIn"></app-admin-header>
+<app-toolbar3></app-toolbar3>
+<!-- <app-admin-header *ngIf="isLoggedIn"></app-admin-header> -->
 <router-outlet></router-outlet>
 <a class="btn-contact floating-button" target="_blank">
   <i class="fab fa-whatsapp"></i>
 </a>
-<app-footer *ngIf="!isLoggedIn"></app-footer>
-<app-admin-footer *ngIf="isLoggedIn"></app-admin-footer>
+<app-footer></app-footer>
+<!-- <app-admin-footer *ngIf="isLoggedIn"></app-admin-footer> -->

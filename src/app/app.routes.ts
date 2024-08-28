@@ -20,6 +20,7 @@ import { MainAdminPageComponent } from './admin/main-admin-page/main-admin-page.
 import { ContactUsComponent } from './website/contact-us/contact-us.component';
 import {GastronomiaVirtualComponent} from "./website/cursos/gastronomia-virtual/gastronomia-virtual.component";
 import {RecetaFiletMignonComponent} from "./website/Recetas/receta-filet-mignon/receta-filet-mignon.component";
+import { AuthGuard } from './guard/auth.guard';
 
 
 export const routes: Routes = [
@@ -44,5 +45,8 @@ export const routes: Routes = [
     { path: 'cursos/reparacion-de-celulares',        component: ReparacionCelularesComponent },
     { path: 'recetas/filet-mignon',        component:  RecetaFiletMignonComponent},
     { path: 'iniciar-sesion',        component: IniciarSesionComponent },
-    { path: 'admin',        component: MainAdminPageComponent }
+    { path: 'admin',
+        loadComponent: () => import('./admin/main-admin-page/main-admin-page.component')
+        .then(m => m.MainAdminPageComponent),
+        canActivate: [AuthGuard] }
 ];
