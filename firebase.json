@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "tunari-65fdc",
     "public": "dist/tunari-deploy/browser",
     "ignore": [
       "firebase.json",
