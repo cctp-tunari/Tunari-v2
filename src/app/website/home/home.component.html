@@ -1,0 +1,268 @@
+<div class="header">
+  <img src="tunari-portada.jpg" class="img-fluid" alt="">
+  <div class="overlay">
+    <img src="logo_borde_blanco2.png" class="logo" alt="Logo">
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row benefits-row">
+      <!-- Tarjeta 1 -->
+      <div class="col-md-4 benefit-item clickable-card" (click)="navigateTo('sobre-nosotros')">
+        <div class="benefit-icon">
+          <i class="fas fa-building"></i>
+        </div>
+        <h4>Nuestra Corporación</h4>
+        <p>Con más de 7 años de experiencia, somos líderes en ofrecer educación de calidad y reconocida a nivel nacional.</p>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="col-md-4 benefit-item clickable-card" (click)="navigateTo('convenios')">
+        <div class="benefit-icon">
+          <i class="fas fa-handshake"></i>
+        </div>
+        <h4>Nuestros Convenios</h4>
+        <p>Colaboramos con instituciones internacionales para ofrecerte una educación de vanguardia y oportunidades únicas.</p>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="col-md-4 benefit-item clickable-card" (click)="navigateTo('actividades')">
+        <div class="benefit-icon">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <h4>Actividades</h4>
+        <p>Participa en talleres y eventos exclusivos diseñados para complementar tu formación académica.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="inscripciones-row">
+  <!-- Video Section -->
+  <div class="video-presentation">
+    <h2>Haz de tu pasión tu profesión... </h2>
+    <h2>Las inscripciones están abiertas!</h2>
+    <div class="video-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/tIyGTmt_pLM" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Info Section -->
+  <div class="info-section">
+    <div class="row">
+      <!-- Texto Principal -->
+      <div class="col-md-6 text-section">
+        <h3>Y muy pronto tendrás la oportunidad de pasar los cursos desde la comodidad de tu casa de manera asíncrona.</h3>
+        <p>Cursos virtuales disponibles:</p>
+        <ul class="course-list">
+          <li><a href="#"><i class="fas fa-utensils"></i> Técnicas culinarias (Gastronomía)</a></li>
+          <li><a href="#"><i class="fas fa-cocktail"></i> Coctelería</a></li>
+        </ul>
+      </div>
+
+      <!-- Imagen -->
+      <div class="col-md-6 image-section">
+        <img src="online_student.png" alt="Imagen relacionada" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container course-container">
+  <div class="row">
+    <h2 class="section-title">Cursos destacados</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card" style="background-image: url('b_gastronomia_background.png')"
+           (click)="navigateTo('cursos/gastronomia2')">
+        <h5 class="card-title">Gastronomía</h5>
+        <div class="card-body">
+          <p>Formamos a jóvenes y señoritas en el mundo de la Gastronomía donde aprenderán a elaborar platos de Cocina
+            Nacional, Internacional, Repostería, Panadería y Pastelería, desarrollando conocimientos para el diseño de
+            menú en una amplia variedad de recetas para instituciones.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="card" style="background-image: url('b_cocteleria_background.png')"
+           (click)="navigateTo('cursos/cocteleria')">
+        <h5 class="card-title">Coctelería</h5>
+        <div class="card-body">
+          <p>Formamos a jóvenes y señoritas en el mundo de la Coctelería Bartender, donde aprenderán las diferentes
+            técnicas de elaboración y decoración de tragos y las principales técnicas de coctelería detrás de barra
+            para que puedan desenvolverse profesionalmente tanto a nivel local como nacional. A su vez, durante el
+            curso aprenderán el protocolo de atención para brindar un servicio de coctelería en eventos.</p>
+        </div>
+      </div>
+    </div>
+<!--    <div class="col-md-6 mb-4">-->
+<!--      <div class="card" style="background-image: url('b_reparacion_celulares_background.png')"-->
+<!--           (click)="navigateTo('cursos/reparacion-de-celulares')">-->
+<!--        <h5 class="card-title">Reparación de Celulares</h5>-->
+<!--        <div class="card-body">-->
+<!--          <p>Formamos a futuros jóvenes, técnicos especialistas en resolver problemas de los diferentes tipos de-->
+<!--            celulares, iPhone y tablets a requerimiento y solicitud del cliente. Teniendo un amplio conocimiento en-->
+<!--            manejo de herramientas, con habilidad y destreza en el manejo de hardware y software.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-6 mb-4">-->
+<!--      <div class="card" style="background-image: url('b_peluqueria_background.png')"-->
+<!--           (click)="navigateTo('cursos/peluqueria')">-->
+<!--        <h5 class="card-title">Estilismo en Peluquería</h5>-->
+<!--        <div class="card-body">-->
+<!--          <p>Nuestros estudiantes estarán capacitados para realizar técnicas de belleza aplicando diseños de acuerdo a-->
+<!--            la imagen de las personas. Proyectando un cambio de imagen favorable para el/la cliente, trabajando-->
+<!--            siempre en condiciones de calidad, seguridad e higiene.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-6 mb-4">-->
+<!--      <div class="card" style="background-image: url('b_atencion_cliente_background.png')"-->
+<!--           (click)="navigateTo('cursos/atencion-al-cliente')">-->
+<!--        <h5 class="card-title">Atención al Cliente</h5>-->
+<!--        <div class="card-body">-->
+<!--          <p>A través de los años, la competencia entre compañías ha ido incrementándose y la variedad de productos-->
+<!--            ofrecidos en el mercado ha aumentado cada día más. Paralelamente, los clientes se vuelven cada vez más-->
+<!--            exigentes. Los consumidores ya no buscan solo calidad y buenos precios, sino también un buen servicio.-->
+<!--            Desarrollando en los participantes principios básicos y fundamentales de atención al cliente, con el fin-->
+<!--            de brindar soluciones frente a consultas, reclamos, del cliente al momento de realizar alguna compra o-->
+<!--            venta.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-6 mb-4">-->
+<!--      <div class="card" style="background-image: url('b_diseno_background.png')"-->
+<!--           (click)="navigateTo('cursos/diseño-dimensional')">-->
+<!--        <h5 class="card-title">Diseño Dimensional</h5>-->
+<!--        <div class="card-body">-->
+<!--          <p>El estudiante de Diseño dimensional Gráfico Publicitario conocerá y aplicará herramientas de diseño-->
+<!--            publicitario y diseños 3D, para desarrollar e impulsar la marca de una organización o empresa, empleando-->
+<!--            programas de última generación requerido en ambientes de trabajo.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-6 mb-4">-->
+<!--      <div class="card" style="background-image: url('b_computacion_background.png')"-->
+<!--           (click)="navigateTo('cursos/computacion')">-->
+<!--        <h5 class="card-title">Office (Computación)</h5>-->
+<!--        <div class="card-body">-->
+<!--          <p>El estudiante de Computación estará capacitado para desarrollar herramientas tecnológicas de alto nivel-->
+<!--            mediante programas de ofimática para dar solución a los requerimientos empresariales.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-6 mb-4">-->
+<!--      <div class="card" style="background-image: url('b_marketing_digital_background.png')"-->
+<!--           (click)="navigateTo('cursos/marketing-digital')">-->
+<!--        <h5 class="card-title">Marketing Digital</h5>-->
+<!--        <div class="card-body">-->
+<!--          <p>Vivimos en el tiempo de la comunicación. Donde cada institución o persona quiere realizar actividades de-->
+<!--            compra o venta en un mundo contemporáneo para ello debe tener un dominio profundo de las nuevas-->
+<!--            herramientas y técnicas relacionadas con la comunicación digital y las redes sociales, pues esta juega un-->
+<!--            papel transversal que afecta a las personas e instituciones. El curso de compras y ventas online-->
+<!--            (marketing digital) a través de las redes sociales contribuirá de gran manera a las empresas y negocios a-->
+<!--            realizar que sus negocios sean más productivos.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+  <a href="/cursos" class="btn-custom">Ver todos los cursos >>></a>
+</div>
+
+<div class="promo-row row">
+  <div class="col-md-6 promo-image">
+    <img src="nuevo-curso-enfermeria.png" alt="Imagen del nuevo curso">
+  </div>
+  <div class="col-md-6 promo-text">
+    <h2>¡Próximamente!</h2>
+    <p>Estamos trabajando en un nuevo proyecto. ¿Puedes adivinar cuál es?</p>
+    <p>¡Mantente atento para más detalles!</p>
+    <a href="#" class="btn btn-primary">Más Información</a>
+  </div>
+</div>
+
+
+<div class="benefits-section">
+  <div class="container">
+    <h2 class="section-title">Nuestros Beneficios</h2>
+    <div class="row benefits-row">
+      <!-- First Benefit -->
+      <div class="col-md-4 benefit-item">
+        <div class="benefit-icon">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <h4>Certificación Reconocida</h4>
+        <p>Obtén una certificación que es reconocida y valorada en la industria, lo que te permitirá destacarte en el mercado laboral.</p>
+      </div>
+
+      <!-- Second Benefit -->
+      <div class="col-md-4 benefit-item">
+        <div class="benefit-icon">
+          <i class="fas fa-user-clock"></i>
+        </div>
+        <h4>Flexibilidad de Horarios</h4>
+        <p>Accede a cursos diseñados para adaptarse a tu rutina, permitiéndote aprender a tu propio ritmo y en tu propio tiempo.</p>
+      </div>
+
+      <!-- Third Benefit -->
+      <div class="col-md-4 benefit-item">
+        <div class="benefit-icon">
+          <i class="fas fa-chalkboard-teacher"></i>
+        </div>
+        <h4>Aprendizaje de Calidad</h4>
+        <p>Instructores expertos y contenidos actualizados garantizan que obtengas el mejor conocimiento disponible en el área.</p>
+      </div>
+    </div>
+
+    <div class="row benefits-row">
+      <!-- Fourth Benefit -->
+      <div class="col-md-4 benefit-item">
+        <div class="benefit-icon">
+          <i class="fas fa-network-wired"></i>
+        </div>
+        <h4>Red de Contactos</h4>
+        <p>Conéctate con otros estudiantes y profesionales en el campo, ampliando tu red de contactos y oportunidades.</p>
+      </div>
+
+      <!-- Fifth Benefit -->
+      <div class="col-md-4 benefit-item">
+        <div class="benefit-icon">
+          <i class="fas fa-hand-holding-usd"></i>
+        </div>
+        <h4>Precios Asequibles</h4>
+        <p>Ofrecemos cursos de alta calidad a precios que se ajustan a tu presupuesto, sin sacrificar la excelencia educativa.</p>
+      </div>
+
+      <!-- Sixth Benefit -->
+      <div class="col-md-4 benefit-item">
+        <div class="benefit-icon">
+          <i class="fas fa-thumbs-up"></i>
+        </div>
+        <h4>Satisfacción Garantizada</h4>
+        <p>Nos esforzamos por brindar la mejor experiencia de aprendizaje, con un alto índice de satisfacción entre nuestros estudiantes.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="contacto-redes-section">
+  <div class="container">
+    <div class="contacto-rapido">
+      <h2 class="section-title-light">¿Tienes preguntas?</h2>
+      <p>Estamos aquí para ayudarte en tu camino hacia el éxito profesional.</p>
+      <a href="/contacto" class="btn-custom">Contáctanos</a>
+    </div>
+    <div class="redes-sociales">
+      <h3>Síguenos en redes sociales</h3>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com" target="_blank" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/channel/UCpQGPvePYqngF-IWlyQaibg" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</section>

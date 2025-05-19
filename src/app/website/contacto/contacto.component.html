@@ -1,0 +1,66 @@
+<section class="contact-section">
+  <div class="container">
+    <h1 class="section-title">Contáctanos</h1>
+    <div class="contact-grid">
+      <div class="contact-form">
+        <h2>Envíanos un mensaje</h2>
+        <form (ngSubmit)="onSubmit()" #studentForm="ngForm">
+          <div class="form-group">
+            <input type="text" id="name" name="name" required [(ngModel)]="newStudent.name">
+            <label for="name">Nombre</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" required [(ngModel)]="newStudent.email">
+            <label for="email">Email</label>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="phone" name="phone" required [(ngModel)]="newStudent.phone">
+            <label for="phone">Número de teléfono</label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" required [(ngModel)]="newStudent.message"></textarea>
+            <label for="message">Mensaje o consulta</label>
+          </div>
+          <button type="submit" class="btn-submit" [disabled]="!studentForm.valid">Enviar mensaje</button>
+        </form>
+        <div *ngIf="successMessage" class="alert alert-success mt-3" role="alert">
+          {{ successMessage }}
+        </div>
+<!--        <button class="btn btn-primary" (click)="addNewStudent()">Agregar Estudiante</button>-->
+      </div>
+      <div class="contact-info">
+        <h2>Información de contacto</h2>
+        <ul class="info-list">
+          <li>
+            <i class="fas fa-location-pin"></i>
+            <p>Santivañez Nº 161 entre Nataniel Aguirre y Ayacucho, Cochabamba</p>
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:cctp.tunari@gmail.com">tunari&#64;gmail.com</a>
+          </li>
+          <li>
+            <i class="fas fa-phone"></i>
+            <div class="phone-list">
+              <a href="tel:+59144444444">+591 4 4501132</a>
+              <a href="tel:+59177712345">+591 75987288 &nbsp;<i class="fab fa-whatsapp"></i></a>
+              <a href="tel:+59177712346">+591 78328095</a>
+            </div>
+          </li>
+        </ul>
+        <div>
+          <h2>Nuestras redes sociales</h2>
+          <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com" target="_blank" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/channel/UCpQGPvePYqngF-IWlyQaibg" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d419.6116966893506!2d-66.15777216949336!3d-17.39420320463776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93e3738b340b4ce3%3A0xf57ae1cbfa3845b9!2sCORPORACION%20TUNARI!5e0!3m2!1sen!2sbo!4v1720193891415!5m2!1sen!2sbo" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,276 @@
+
+$primary-color: #800020;
+$secondary-color: #2C6772;
+$background-color: #f8f9fa;
+$text-color: #333;
+$light-text: #fff;
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contact-section {
+  padding: 4rem 0;
+  //background-color: $background-color;
+  background: linear-gradient(to right, #000, #10424d);
+  color: $text-color;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: $light-text;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background-color: $light-text;
+      margin: 0.5rem auto;
+    }
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .contact-form, .contact-info {
+    background-color: $light-text;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: $secondary-color;
+  }
+
+  .form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      background-color: #f1f3f5;
+
+      &:focus {
+        outline: none;
+        border-color: $secondary-color;
+        box-shadow: 0 0 0 3px rgba($secondary-color, 0.1);
+      }
+
+      &:focus + label, &:not(:placeholder-shown) + label {
+        top: -0.5rem;
+        left: 0.75rem;
+        font-size: 0.75rem;
+        background-color: #f1f3f5;
+        padding: 0 0.25rem;
+        color: $secondary-color;
+      }
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    label {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      font-size: 1rem;
+      color: #666;
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+  }
+
+  .btn-submit {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: $primary-color;
+    color: $light-text;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: translateX(5px);
+      }
+
+      i {
+        font-size: 1.25rem;
+        color: $secondary-color;
+        margin-right: 1rem;
+        margin-top: 0.25rem;
+      }
+
+      p, a {
+        color: $text-color;
+        text-decoration: none;
+        transition: color 0.3s;
+        flex: 1;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+
+      &.phone-numbers {
+        align-items: flex-start;
+      }
+
+      .phone-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        flex: 1;
+      }
+
+      a {
+        display: block;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .social-media {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: $secondary-color;
+      color: $light-text;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      transition: background-color 0.3s, transform 0.3s;
+
+      &:hover {
+        background-color: $primary-color;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .map-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-info {
+    .info-list {
+      li {
+        flex-direction: column;
+
+        i {
+          margin-bottom: 0.5rem;
+        }
+
+        &.phone-numbers {
+          .phone-list {
+            margin-top: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  font-size: large;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #2C6772;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.social-icon.facebook:hover { background-color: #3b5998; color: #f8f9fa; }
+.social-icon.instagram:hover { background-color: #e1306c; color: #f8f9fa; }
+.social-icon.tiktok:hover { background-color: #000000; color: #f8f9fa; }
+.social-icon.youtube:hover { background-color: #e30404; color: #ffffff; }
+

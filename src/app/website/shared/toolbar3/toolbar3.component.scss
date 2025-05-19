@@ -1,0 +1,219 @@
+// Variables
+$primary-color: #9d2727;
+$secondary-color: #c53c3c;
+$text-color: #fff;
+$hover-color: #222;
+$header-hover-text: #fff;
+$border-color: #ddd;
+$padding-header: 0.5rem 1.5rem;
+
+// Top Bar
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px;
+  background: $primary-color;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.top-bar .social-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.top-bar .social-links li {
+  margin: 0 5px;
+}
+
+.top-bar a {
+  color: $text-color;
+}
+
+.top-bar a:hover {
+  color: $hover-color;
+}
+
+// Mainbar (Navbar)
+.mainbar {
+  background-color: $text-color;
+  padding: 0.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.navbar-brand img {
+  max-height: 50px;
+}
+
+.logo-small {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .logo-large {
+    display: none;
+  }
+
+  .logo-small {
+    display: inline-block;
+  }
+
+  .navbar-brand img {
+    width: 200px;
+  }
+}
+
+.contact-button {
+  background-color: $primary-color;
+  color: $text-color;
+  font-size: 14px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+  background-color: $secondary-color;
+}
+
+.navbar-toggler {
+  border: none;
+  font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close {
+  box-shadow: none;
+  outline: none;
+}
+
+.nav-link {
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #000;
+}
+
+@media (min-width: 991px) {
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: $primary-color;
+    visibility: hidden;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .nav-link:hover::before, .nav-link.active::before {
+    width: 100%;
+    visibility: visible;
+  }
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.25rem;
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 1rem;
+  }
+
+  .navbar-toggler {
+    margin-left: auto;
+  }
+}
+
+// Estilo para reducir el tamaño de los encabezados del menú desplegable
+.custom-dropdown-menu .dropdown-header {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #000;
+  white-space: nowrap;
+  border-bottom: 1px solid $border-color;
+}
+
+// Estilo para cambiar el color de hover
+.custom-dropdown-menu .dropdown-item:hover {
+  background-color: $primary-color;
+  color: $header-hover-text;
+}
+
+// Estilo para el menú desplegable
+.custom-dropdown-menu {
+  transform: translateX(-50%);
+  left: 50%;
+  min-width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: visibility 0.2s, opacity 0.2s linear;
+  visibility: hidden;
+  opacity: 0;
+  display: block;
+  position: absolute;
+}
+
+// Ajustar el ancho del menú desplegable
+.custom-dropdown-menu .container {
+  width: 100%;
+  padding: 0;
+}
+
+// Asegura que las columnas no se corten
+.custom-dropdown-menu .row {
+  flex-wrap: wrap;
+}
+
+// Ajuste de padding y margen para evitar el corte de elementos
+.custom-dropdown-menu .col-md-4 {
+  padding: 0.5rem;
+  flex: 0 0 100%;
+}
+
+// Centrar el enlace "Todos nuestros cursos"
+.custom-dropdown-menu .dropdown-item.text-center {
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+// Ajustes adicionales para pantallas pequeñas
+@media (max-width: 767.98px) {
+  .custom-dropdown-menu .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-dropdown-menu {
+    min-width: 600px;
+  }
+}

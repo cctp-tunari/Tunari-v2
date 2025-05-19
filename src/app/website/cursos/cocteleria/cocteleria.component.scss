@@ -1,0 +1,201 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+.height-row {
+  min-height: 65vh;
+}
+
+//Efecto texto
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slideInFromRight 4s ease-out;
+}
+
+.animate-slide-in.animate-visible {
+  opacity: 1;
+}
+
+//Efecto background
+@keyframes zoomInOut {
+  0% {
+    background-size: 120%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+
+.custom-background {
+  width: 100%;
+  height: 90vh;
+  margin: 0;
+  color: white;
+  animation: zoomInOut 10s;
+}
+
+.custom-button {
+  background-color: #800020;
+  color: white;
+  border: none;
+}
+
+.custom-button:hover {
+  background-color: white;
+  border:  #800020;
+  transition: background-color 0.3s, border-color 0.3s;
+  color: #800020;
+}
+
+
+//tabs
+.nav-tabs .nav-link {
+  border-bottom: 2px solid #2C6772;
+  color: #000;
+}
+
+.nav-tabs .nav-link.active {
+  border-bottom: 2px solid white;
+  color: #2C6772;
+  font-weight: bold;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #2C6772;
+}
+
+
+//card
+.card {
+  border: 1px solid #2C6772;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+
+  &:hover {
+    transform: translateY(-5px); /* Eleva la tarjeta al pasar el mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al pasar el mouse */
+  }
+
+  /* Estilos del encabezado */
+  .card-header {
+    background-color: #2C6772; /* Color de fondo del encabezado */
+    color: #ffffff; /* Color del texto del encabezado */
+    font-weight: bold;
+  }
+
+  /* Estilos del cuerpo de la tarjeta */
+  .card-body {
+    background-color: #f8f9fa; /* Color de fondo del cuerpo de la tarjeta */
+    color: #333; /* Color del texto en el cuerpo */
+    padding: 1.5rem; /* Padding interno */
+
+    /* Estilos para la lista */
+    ul {
+      padding-left: 1.5rem;
+      list-style-type: disc;
+    }
+
+    /* Margen superior para el título "Este curso incluye:" */
+    h6 {
+      margin-top: 1.5rem;
+    }
+
+    /* Estilo para el título de la tarjeta */
+    .card-title {
+      color: #2C6772; /* Color del título */
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    /* Estilo para el span de costo */
+    span {
+      font-weight: bold;
+      color: #555; /* Color del texto de costo */
+    }
+
+    /* Estilo para el botón */
+    .inscribete-btn {
+      background-color: #2C6772; /* Color de fondo del botón */
+      color: #fff; /* Color del texto del botón */
+      border: none; /* Sin borde */
+      //padding: 10px 20px; /* Padding interno */
+      border-radius: 0.25rem; /* Bordes redondeados */
+      transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+
+      &:hover {
+        background-color: #1f4d54; /* Color de fondo al pasar el mouse */
+      }
+    }
+  }
+}
+
+
+//separador horarios
+.schedule {
+  padding: 15px;
+}
+
+.vertical-line {
+  border-left: 2px solid #2C6772;
+  height: 100%;
+  margin: 0 15px;
+}
+
+@media (max-width: 767px) {
+  .tabs-container {
+    margin-top: 20px;
+  }
+}
+
+/* Estilo para el contenedor de vista previa del curso */
+.course-preview-bg {
+  background-color: #990033; /* Color de fondo */
+  //padding: 0 0; /* Padding superior e inferior */
+}
+
+.course-description {
+  color: white; /* Color de fondo */
+  padding: 1.5rem; /* Padding interno */
+}
+
+/* Ajustes para la clase embed-responsive */
+.embed-responsive {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.embed-responsive::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%; /* Relación de aspecto 16:9 */
+}
+
+.embed-responsive .embed-responsive-item,
+.embed-responsive iframe,
+.embed-responsive embed,
+.embed-responsive object,
+.embed-responsive video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

@@ -1,0 +1,477 @@
+@keyframes vibrate {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(0, -5px); }
+  50% { transform: translate(0, -10px); }
+  75% { transform: translate(0, -5px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes fadeIn {
+   to {
+     opacity: 1;
+   }
+ }
+
+.section {
+  background: linear-gradient(to bottom, #10424d, #3B8B94);
+  padding: 5em 0 5em 0;
+
+  .icon-large {
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    color: #10424d;
+    transition: animation 0.5s;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+  .icon-large:hover {
+    animation: vibrate 0.1s linear infinite;
+    animation-duration: 0.5s;
+  }
+
+  .card {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #2C6772;
+    padding: 1em;
+    transition: transform 0.3s;
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+    }
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+
+
+//header image
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 55%);
+  z-index: 1;
+}
+
+.header {
+  position: relative;
+
+  img {
+    display: block;
+    width: 100%;
+    max-height: 90vh;
+  }
+}
+
+.header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+
+  img {
+    max-width: 620px;
+    z-index: 10;
+  }
+}
+
+.header .overlay .logo {
+  opacity: 0;
+  animation: fadeIn 7s forwards;
+}
+
+
+// section courses
+
+.course-container {
+  padding: 5em 0 5em 0;
+  .card {
+    transition: transform 0.3s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    h5 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 2;
+    }
+    .card-body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 1;
+    }
+  }
+}
+
+
+.course-container .card:hover .card-body {
+  opacity: 1;
+}
+
+.course-container .card:hover h5 {
+  opacity: 0;
+}
+
+.course-container .card:hover {
+  transform: scale(1.05);
+}
+
+.course-container h3 {
+  text-align: center;
+  padding-bottom: 2em;
+}
+
+
+// benefits section
+.benefits-section {
+  padding: 5em 0 5em 0;
+}
+.benefits-row {
+  display: flex;
+  justify-content: flex-start;
+align-items: stretch;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.benefit-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  flex: 1 1 300px;
+
+&:hover {
+  transform: translateY(-10px);
+}
+
+  .benefit-icon {
+    font-size: 3rem;
+    color: #2C6772;
+    margin-bottom: 10px;
+
+    &:hover {
+      animation: vibrate 0.1s linear infinite;
+      animation-duration: 0.5s;
+    }
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #555;
+  }
+}
+
+.clickable-card {
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}
+.inscripciones-row {
+  background: linear-gradient(to bottom, #6adada, white);
+  display: flex;
+  flex-direction: column;
+
+  .video-presentation {
+    padding: 20px 0;
+    text-align: center;
+    background: linear-gradient(to bottom, #3B8B94, #6adada);
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: white;
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      position: relative;
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+  }
+
+  .info-section {
+    padding: 20px 30px;
+    background: linear-gradient(to bottom, #6adada, white);
+
+    .row {
+      display: flex;
+      align-items: center;
+    }
+
+    .text-section {
+      padding: 50px;
+      text-align: left;
+
+      h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: #333;
+        margin-top: 0;
+      }
+
+      p {
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding-left: 60px;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .course-list {
+        list-style: none;
+        padding-left: 60px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+
+        li {
+          margin-bottom: 10px;
+
+          a {
+            text-decoration: none;
+            color: #2C6772;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+
+            i {
+              margin-right: 10px;
+              color: #2C6772;
+            }
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+
+    .image-section {
+      text-align: center;
+
+      img {
+        max-width: 80%;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.promo-row {
+  background: linear-gradient(to bottom, white, #004c8c);
+  padding: 40px 20px;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    padding: 60px 40px;
+  }
+
+  .promo-image {
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  }
+
+  .promo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    padding-left: 20px;
+
+    h2 {
+      font-size: 2.5rem;
+      color: #00264d;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .btn-primary {
+      background-color: #006bb3;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #004c8c;
+      }
+    }
+  }
+}
+
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #10424d;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #10424d;
+    margin: 0.5rem auto;
+  }
+}
+.section-title-light {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: white;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: white;
+    margin: 0.5rem auto;
+  }
+}
+
+.contacto-redes-section {
+  padding: 4rem 0;
+  background-color: #800020;
+  color: #ffffff;
+}
+
+.contacto-rapido {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.btn-custom {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2C6772;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #6adada;
+  color: #2C6772;
+}
+
+.redes-sociales {
+  text-align: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #2C6772;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.social-icon.facebook:hover { background-color: #3b5998; color: #f8f9fa; }
+.social-icon.instagram:hover { background-color: #e1306c; color: #f8f9fa; }
+.social-icon.tiktok:hover { background-color: #000000; color: #f8f9fa; }
+.social-icon.youtube:hover { background-color: #e30404; color: #ffffff; }

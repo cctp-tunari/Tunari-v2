@@ -1,0 +1,88 @@
+ <div class="mainbar">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid d-flex align-items-center justify-content-between">
+
+        <a class="navbar-brand me-auto" href="/home">
+          <img src="logo_borde_blanco2_small.png" alt="Tunari Logo" class="logo-img img-fluid d-none d-md-inline">
+        </a>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/sobre-nosotros">Nuestra corporación</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Cursos
+                </a>
+                <ul class="dropdown-menu custom-dropdown-menu">
+                  <div class="container">
+                    <div class="row custom-row">
+                      <!-- Cursos síncronos -->
+                      <div class="col-md-4 col-12 custom-col">
+                        <h6 class="dropdown-header">Cursos síncronos</h6>
+                        <a class="dropdown-item" href="/cursos/gastronomia">Técnicas Culinarias (Gastronomía)</a>
+                        <a class="dropdown-item" href="/cursos/cocteleria">Coctelería</a>
+                        <a class="dropdown-item" href="/cursos/reparacion-de-celulares">Reparación de Celulares</a>
+                        <a class="dropdown-item" href="/cursos/peluqueria">Estilismo en Peluquería</a>
+                        <a class="dropdown-item" href="/cursos/atencion-al-cliente">Atención al Cliente</a>
+                        <a class="dropdown-item" href="/cursos/diseño-dimensional">Diseño Dimensional</a>
+                        <a class="dropdown-item" href="/cursos/computacion">Office (Computación)</a>
+                        <a class="dropdown-item" href="/cursos/marketing-digital">Marketing Digital</a>
+                      </div>
+                      <!-- Cursos asíncronos -->
+                      <div class="col-md-4 col-12 custom-col">
+                        <h6 class="dropdown-header">Cursos asíncronos</h6>
+                        <a class="dropdown-item" href="/cursos/gastronomia-virtual">Técnicas Culinarias Virtual</a>
+                      </div>
+                      <!-- Mini cursos -->
+                      <div class="col-md-4 col-12 custom-col">
+                        <h6 class="dropdown-header">Recetas culinarias</h6>
+                        <a class="dropdown-item" href="/recetas/filet-mignon">Filet Mignon</a>
+                      </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-center" href="/cursos">Todos nuestros cursos</a>
+                  </div>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/convenios">Convenios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/actividades">Actividades</a>
+              </li>
+<!--              <li class="nav-item">-->
+<!--                <a class="nav-link" href="/graduados">Graduados</a>-->
+<!--              </li>-->
+              <li class="nav-item">
+                <a class="nav-link" href="/contacto">Contacto</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" *ngIf="isLoggedIn" href="/admin">Admin</a>
+              </li>
+
+              <li class="nav-item" *ngIf="!isLoggedIn">
+                <a class="nav-link" href="/iniciar-sesion">Iniciar Sección</a>
+              </li>
+              <li class="nav-item" *ngIf="isLoggedIn">
+                <a class="nav-link" (click)="onLogout()" href="/home">Cerrar sesión</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="d-flex align-items-center">
+            <a href="https://moodle-179565-0.cloudclusters.net/?redirect=0" class="contact-button me-2">Moodle</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+<!-- </header> -->

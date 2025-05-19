@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "tunari-65fdc",
+    "public": "dist/tunari-deploy/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
