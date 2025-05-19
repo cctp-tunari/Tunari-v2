@@ -21,8 +21,8 @@
 Clona el repositorio y entra a la carpeta del proyecto:
 
 ```bash
-git clone https://github.com/tuusuario/tunarideploy.git
-cd tunarideploy
+git clone https://github.com/cctp-tunari/Tunari-v2.git
+cd Tunari-v2
 npm install
 ```
 
