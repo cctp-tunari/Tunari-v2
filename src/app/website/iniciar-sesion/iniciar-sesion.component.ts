@@ -24,9 +24,11 @@ export class IniciarSesionComponent {
   public password: any = "";
   public showAlert = false;
   public message: any;
+
+  public resetMode = false;
   
-
-
+  
+  
 
   constructor(private router: Router, private appComponent: AppComponent, private userService: UserService, private studentService: StudentService) {}
 
@@ -87,6 +89,23 @@ export class IniciarSesionComponent {
   delete() {
 
   } 
+
+  sendPasswordReset() {
+    if (!this.email) {
+      this.message = 'Por favor ingresa tu correo.';
+      return;
+    }
+
+    this.userService.resetPassword(this.email)
+      .then(() => {
+        this.message = 'Correo de recuperación enviado. Revisa tu bandeja de entrada.';
+        this.resetMode = false;
+      })
+      .catch(error => {
+        console.error(error);
+        this.message = 'Error al enviar el correo: ' + error.message;
+      });
+  }
 }
 
 

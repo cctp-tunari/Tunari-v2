@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "@angular/fire/auth";
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "@angular/fire/auth";
 import {Observable, Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import { browserLocalPersistence, getAuth, setPersistence, signOut } from "firebase/auth";
 import { Router } from '@angular/router';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
+
 
 @Injectable({
     providedIn: 'root'
@@ -89,6 +90,13 @@ export class UserService {
             resolve(false);
           }
     });}
+
+
+    resetPassword(email: string) {
+      return sendPasswordResetEmail(this.auth, email);
+    }
+
+
 
     //TODO: (refactor) to student service
 

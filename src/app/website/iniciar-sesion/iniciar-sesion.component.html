@@ -1,38 +1,42 @@
-<!-- login.component.html -->
 <div class="header">
   <img src="cochabamba-portada.jpg" class="img-fluid" alt="">
   <div class="overlay">
     <div class="login-container">
       <h5>Iniciar Sesión</h5>
-      <form (ngSubmit)="onLogin()">
+
+      <!-- Condicional: formulario de login o recuperación -->
+      <form *ngIf="!resetMode" (ngSubmit)="onLogin()">
         <div class="form-group">
           <label for="username">Usuario</label>
-          <input type="text" id="username" [(ngModel)]="email" name="username" required>
+          <input type="text" id="username" [(ngModel)]="email" name="username" required placeholder="ejemplo@email.com">
         </div>
         <div class="form-group">
           <label for="password">Contraseña</label>
-          <input type="password" id="password" [(ngModel)]="password" name="password" required>
+          <input type="password" id="password" [(ngModel)]="password" name="password" required placeholder="••••••••">
         </div>
         <button type="submit">Iniciar Sesión</button>
       </form>
-      <p><a href="#">¿Olvidaste tu contraseña?</a></p>
 
-      <!-- <button (click)="add()" type="submit">Add user</button> -->
-      <!-- <button (click)="test()" type="submit">add</button>
-      <button (click)="list()" type="submit">list</button> -->
-      <!-- <button (click)="get()" type="submit">get</button>
-      <button (click)="update()" type="submit">update</button>
-      <button (click)="delete()" type="submit">delete</button> -->
+      <!-- Formulario de recuperación de contraseña -->
+      <form *ngIf="resetMode" (ngSubmit)="sendPasswordReset()">
+        <div class="form-group">
+          <label for="resetEmail">Correo para recuperación</label>
+          <input type="email" id="resetEmail" [(ngModel)]="email" name="resetEmail" required placeholder="ejemplo@email.com">
+        </div>
+        <button type="submit">Enviar correo de recuperación</button>
+        <p><a href="#" (click)="resetMode = false; $event.preventDefault();">← Volver al inicio de sesión</a></p>
+      </form>
 
-
-
-
-
+      <!-- Enlace para activar modo recuperación -->
+      <p *ngIf="!resetMode">
+        <a href="#" (click)="resetMode = true; $event.preventDefault();">¿Olvidaste tu contraseña?</a>
+      </p>
     </div>
   </div>
 </div>
 
-<div *ngIf="showAlert" class="alert alert-danger alert-dismissible fade show alert-top" role="alert">
-  <strong>Error!</strong> {{ message }}
-  <button type="button" class="btn-close" (click)="closeAlert()" aria-label="Close"></button>
+<!-- Mensaje de alerta -->
+<div *ngIf="message" class="alert alert-info alert-dismissible fade show alert-top" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" (click)="message = ''" aria-label="Close"></button>
 </div>
