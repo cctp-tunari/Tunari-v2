@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <h3>Gestión de Administradores</h3>
+
+  <div class="form-group my-3">
+    <input
+      [(ngModel)]="newAdminEmail"
+      type="email"
+      class="form-control"
+      placeholder="Correo del nuevo administrador" />
+    <button class="btn btn-primary mt-2" (click)="addAdmin()" [disabled]="isLoading">Agregar</button>
+  </div>
+
+  <div *ngIf="statusMessage" class="alert alert-info">
+    {{ statusMessage }}
+  </div>
+
+  <table class="table table-bordered table-striped mt-4">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>UID</th>
+        <th>Creado</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let admin of admins">
+        <td>{{ admin.email }}</td>
+        <td>{{ admin.uid }}</td>
+        <td>{{ admin.createdAt | date: 'short' }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="removeAdmin(admin.uid)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

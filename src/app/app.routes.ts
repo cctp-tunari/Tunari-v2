@@ -45,6 +45,13 @@ export const routes: Routes = [
     { path: 'cursos/reparacion-de-celulares',        component: ReparacionCelularesComponent },
     { path: 'recetas/filet-mignon',        component:  RecetaFiletMignonComponent},
     { path: 'iniciar-sesion',        component: IniciarSesionComponent },
+    {
+    path: 'admin-advanced',
+    loadComponent: () =>
+        import('./admin/admin-advanced/admin-advanced.component').then(
+        (m) => m.AdminAdvancedComponent
+        )
+    },
     { path: 'admin',
         loadComponent: () => import('./admin/main-admin-page/main-admin-page.component')
         .then(m => m.MainAdminPageComponent),

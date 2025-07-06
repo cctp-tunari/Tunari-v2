@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import { browserLocalPersistence, getAuth, setPersistence, signOut } from "firebase/auth";
 import { Router } from '@angular/router';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
+import { getDatabase, ref, get } from 'firebase/database';
 
 
 @Injectable({
@@ -44,21 +45,44 @@ export class UserService {
         return createUserWithEmailAndPassword(this.auth, email, password);
     }
 
-    login(email: any, password: any) {
-        console.log("usuario: ",this.auxUser)
-        return signInWithEmailAndPassword(this.auth, email, password)
-          .then((response) => {
-            response.user.getIdToken().then((token) => {
-              localStorage.setItem('userToken', token);
-              localStorage.setItem('currentUser', JSON.stringify(this.auth.currentUser));
+    // login(email: any, password: any) {
+    //     console.log("usuario: ",this.auxUser)
+    //     return signInWithEmailAndPassword(this.auth, email, password)
+    //       .then((response) => {
+    //         response.user.getIdToken().then((token) => {
+    //           localStorage.setItem('userToken', token);
+    //           localStorage.setItem('currentUser', JSON.stringify(this.auth.currentUser));
 
-              this.setAuthentication(true);
+    //           this.setAuthentication(true);
+    //           this.emitEvent(true);
+    //           this.auxUser = this.auth.currentUser
+    //           this.router.navigate(['/admin']);
+    //         });
+    //       });
+    //   }
+
+
+    login(email: any, password: any) {
+      return signInWithEmailAndPassword(this.auth, email, password)
+        .then((response) => {
+          const user = response.user;
+          return user.getIdToken().then((token) => {
+            localStorage.setItem('userToken', token);
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            this.auxUser = user;
+
+            // ✅ Verificar si está en la lista de admins
+            const db = getDatabase();
+            const adminRef = ref(db, `admins/${user.uid}`);
+            return get(adminRef).then(snapshot => {
+              const isAdmin = snapshot.exists();
+              this.setAuthentication(isAdmin);
               this.emitEvent(true);
-              this.auxUser = this.auth.currentUser
               this.router.navigate(['/admin']);
             });
           });
-      }
+        });
+    }
 
     emitEvent(data: any) {
         this.eventSubject.next(data);
@@ -90,6 +114,29 @@ export class UserService {
             resolve(false);
           }
     });}
+
+
+    checkAdminStatus(uidFromStorage?: string): Promise<boolean> {
+      const uid = uidFromStorage || this.auth.currentUser?.uid;
+      console.log('[checkAdminStatus] UID usado:', uid);
+
+      if (!uid) {
+        console.warn('[checkAdminStatus] UID es null o undefined');
+        return Promise.resolve(false);
+      }
+
+      const db = getDatabase();
+      const adminRef = ref(db, `admins/${uid}`);
+      return get(adminRef)
+        .then(snapshot => {
+          console.log('[checkAdminStatus] ¿Es admin?', snapshot.exists());
+          return snapshot.exists();
+        })
+        .catch((err) => {
+          console.error('[checkAdminStatus] Error leyendo Realtime DB:', err);
+          return false;
+        });
+    }
 
 
     resetPassword(email: string) {
