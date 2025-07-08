@@ -163,34 +163,17 @@ export class UserService {
   }
 
   // Solo verifica si está en super admin
-  async checkIfIsSuperAdmin(): Promise<boolean> {
-    console.log('[checkIfIsSuperAdmin] Esperando authState...');
-
-    return new Promise((resolve) => {
-      authState(this.auth).subscribe(async (user) => {
-        if (!user) {
-          console.warn('[checkIfIsSuperAdmin] Usuario no logueado');
-          resolve(false);
-          return;
-        }
-
-        console.log('[checkIfIsSuperAdmin] Usuario cargado:', user.uid);
-        const adminRef = ref(getDatabase(), `admins/${user.uid}`);
-
-        try {
-          const snapshot = await get(adminRef);
-          const data = snapshot.val();
-
-          console.log('[checkIfIsSuperAdmin] Datos:', data);
-          resolve(snapshot.exists() && data.superAdmin === true);
-        } catch (err) {
-          console.error('[checkIfIsSuperAdmin] Error al leer admins:', err);
-          resolve(false);
-        }
+  checkIfIsSuperAdmin(): Promise<boolean> {
+    return new Promise(resolve => {
+      authState(this.auth).subscribe(async user => {
+        if (!user) return resolve(false);
+        const snapshot = await get(ref(getDatabase(), `admins/${user.uid}`));
+        const isSuper = snapshot.exists() && snapshot.val().superAdmin === true;
+        resolve(isSuper);
       });
     });
   }
-
+  
   //TODO: (refactor) to student service
 
   private apiUrl = 'https://tunari-65fdc-default-rtdb.firebaseio.com/Student';
