@@ -13,7 +13,7 @@ export class SuperAdminGuard implements CanActivate {
   ) {}
 
   async canActivate(): Promise<boolean> {
-    const hasAccess = await this.userService.checkAdminAccess();
+    const hasAccess = await this.userService.checkIfIsSuperAdmin();
     if (!hasAccess) {
       this.router.navigate(['/home']);
       return false;

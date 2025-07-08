@@ -63,7 +63,7 @@ export class AdminAdvancedComponent implements OnInit {
     update(adminRef, { superAdmin: isSuper })
       .then(() => {
         this.statusMessage = `Permiso actualizado: ${isSuper ? 'Super Admin' : 'Básico'}`;
-        this.loadAdmins(); 
+        this.loadAdmins();
       })
       .catch((error) => {
         console.error('Error al actualizar permisos:', error);
@@ -98,7 +98,15 @@ export class AdminAdvancedComponent implements OnInit {
     } catch (err: any) {
       console.error(err);
       if (err.code === 'auth/email-already-in-use') {
-        this.statusMessage = 'El correo ya está registrado.';
+        // this.statusMessage = 'El correo ya está registrado.';
+        try {
+          await this.adminService.restoreAdminFromBackup(email);
+          this.statusMessage = 'Administrador restaurado desde respaldo.';
+          this.newAdminEmail = '';
+          this.loadAdmins();
+        } catch {
+          this.statusMessage = 'El correo ya está registrado y no se pudo restaurar.';
+        }
       } else {
         this.statusMessage = 'Error al crear el administrador.';
       }
@@ -118,10 +126,10 @@ export class AdminAdvancedComponent implements OnInit {
 
     if (!confirm) return;
 
-    this.adminService.deleteAdmin(uid)
+    this.adminService.softDeleteAdmin(uid, email)
       .then(() => {
         this.statusMessage = 'Administrador eliminado correctamente.';
-        this.loadAdmins();  
+        this.loadAdmins();
       })
       .catch(err => {
         console.error(err);
@@ -136,7 +144,7 @@ export class AdminAdvancedComponent implements OnInit {
     update(adminRef, { superAdmin: true })
       .then(() => {
         this.statusMessage = 'Usuario promovido a super admin.';
-        this.loadAdmins(); 
+        this.loadAdmins();
       })
       .catch((error) => {
         console.error('Error al promover:', error);

@@ -71,10 +71,70 @@ export class AdminService {
   }
 
   // Eliminar un admin por UID
-  async deleteAdmin(uid: string): Promise<void> {
-    const adminRef = ref(this.db, `${this.adminPath}/${uid}`);
-    await remove(adminRef);
+  // async deleteAdmin(uid: string): Promise<void> {
+  //   const adminRef = ref(this.db, `${this.adminPath}/${uid}`);
+  //   await remove(adminRef);
+  // }
+
+  async deleteAdmin(uid: string, email: string): Promise<void> {
+    const adminRef = ref(this.db, `admins/${uid}`);
+    const backupRef = ref(this.db, `backupAdmins/${email.replace('.', '_')}`);
+
+    // Obtener los datos actuales del admin
+    const snapshot = await get(adminRef);
+    if (snapshot.exists()) {
+      const adminData = snapshot.val();
+
+      // Guardar backup con el email como clave (sin puntos)
+      await set(backupRef, {
+        uid,
+        email,
+        backupAt: Date.now(),
+        ...adminData
+      });
+
+      // Eliminar de admins
+      await remove(adminRef);
+    }
   }
+
+  async softDeleteAdmin(uid: string, email: string): Promise<void> {
+    const adminRef = ref(this.db, `admins/${uid}`);
+    const backupRef = ref(this.db, `backupAdmins/${this.emailToKey(email)}`);
+
+    // Mover datos a backup
+    const snapshot = await get(adminRef);
+    if (snapshot.exists()) {
+      const adminData = snapshot.val();
+      await set(backupRef, { ...adminData, uid });
+      await remove(adminRef); // Eliminar de admins
+    }
+  }
+
+  async restoreAdminFromBackup(email: string): Promise<void> {
+    const key = this.emailToKey(email);
+    const backupRef = ref(this.db, `backupAdmins/${key}`);
+    const snapshot = await get(backupRef);
+
+    if (!snapshot.exists()) throw new Error('No se encontró respaldo');
+
+    const adminData = snapshot.val();
+    const uid = adminData.uid;
+
+    const adminRef = ref(this.db, `admins/${uid}`);
+    await set(adminRef, {
+      email: adminData.email,
+      createdAt: Date.now(),
+      superAdmin: false,
+    });
+
+    await remove(backupRef); // Limpieza
+  }
+
+  emailToKey(email: string): string {
+    return email.replace(/\./g, '_');
+  }
+
 
 
 }

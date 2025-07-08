@@ -154,61 +154,37 @@ export class UserService {
     });
   }
 
-  // async checkAdminAccess(): Promise<boolean> {
-  //   const user = this.auth.currentUser;
-  //   
+  // Solo verifica si está en admins
+  async checkIfisAdmin(): Promise<boolean> {
+    const user = this.auth.currentUser;
+    if (!user) return false;
+    const snapshot = await get(ref(getDatabase(), `admins/${user.uid}`));
+    return snapshot.exists();
+  }
 
-  //   if (!user) {
-  //     console.warn('[checkAdminAccess] No hay usuario activo');
-  //     return false;
-  //   }
+  // Solo verifica si está en super admin
+  async checkIfIsSuperAdmin(): Promise<boolean> {
+    console.log('[checkIfIsSuperAdmin] Esperando authState...');
 
-  //   if (this.adminStatusChecked) {
-  //     console.log('[checkAdminAccess] Usando cache:', this.isSuperAdminCached);
-  //     return this.isSuperAdminCached;
-  //   }
-
-  //   const db = getDatabase();
-  //   const adminRef = ref(db, `admins/${user.uid}`);
-  //   console.log('[checkAdminAccess] Revisando admin en:', `admins/${user.uid}`);
-
-  //   try {
-  //     const snapshot = await get(adminRef);
-  //     console.log('[checkAdminAccess] Existe en admins?', snapshot.exists());
-  //     console.log('[checkAdminAccess] Datos:', snapshot.val());
-
-  //     const isAdmin = snapshot.exists() && snapshot.val()?.superAdmin === true;
-
-  //     // Cachear resultado
-  //     this.adminStatusChecked = true;
-  //     this.isSuperAdminCached = isAdmin;
-
-  //     return isAdmin;
-  //   } catch (err) {
-  //     console.error('[checkAdminAccess] Error leyendo la base de datos:', err);
-  //     return false;
-  //   }
-  // }
-
-
-  checkAdminAccess(): Promise<boolean> {
     return new Promise((resolve) => {
       authState(this.auth).subscribe(async (user) => {
         if (!user) {
+          console.warn('[checkIfIsSuperAdmin] Usuario no logueado');
           resolve(false);
           return;
         }
-        const db = getDatabase();
-        const adminRef = ref(db, `admins/${user.uid}`);
+
+        console.log('[checkIfIsSuperAdmin] Usuario cargado:', user.uid);
+        const adminRef = ref(getDatabase(), `admins/${user.uid}`);
+
         try {
           const snapshot = await get(adminRef);
-          if (!snapshot.exists()) {
-            resolve(false);
-            return;
-          }
           const data = snapshot.val();
-          resolve(data.superAdmin === true);
-        } catch {
+
+          console.log('[checkIfIsSuperAdmin] Datos:', data);
+          resolve(snapshot.exists() && data.superAdmin === true);
+        } catch (err) {
+          console.error('[checkIfIsSuperAdmin] Error al leer admins:', err);
           resolve(false);
         }
       });

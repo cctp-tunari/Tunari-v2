@@ -32,9 +32,9 @@ export class IniciarSesionComponent {
   async onLogin() {
     try {
       await this.userService.login(this.email, this.password);
-
+      console.log('[onLogin] Iniciando sesión con', this.email);
       // Ahora revisa si tiene acceso
-      const isAdmin = await this.userService.checkAdminAccess();
+      const isAdmin = await this.userService.checkIfisAdmin();
 
       if (!isAdmin) {
         // await this.userService.logoutPromise();
