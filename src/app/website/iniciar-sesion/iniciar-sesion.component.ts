@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { AppComponent } from '../../app.component';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../../services/user.service';
@@ -26,29 +26,42 @@ export class IniciarSesionComponent {
   public message: any;
 
   public resetMode = false;
-  
-  
-  
 
-  constructor(private router: Router, private appComponent: AppComponent, private userService: UserService, private studentService: StudentService) {}
 
-  onLogin() {
-    this.userService.login(this.email, this.password)
-      .then(() => {
-        // this.router.navigate(['/admin']);
-      })
-      .catch(error => {
-        console.log(error);
-        this.openErrorAlert();
-      });
+
+
+  constructor(private router: Router, private appComponent: AppComponent, private userService: UserService, private studentService: StudentService) { }
+
+  async onLogin() {
+    try {
+      await this.userService.login(this.email, this.password);
+
+      // Ahora revisa si tiene acceso
+      const isAdmin = await this.userService.checkAdminAccess();
+
+      if (!isAdmin) {
+        // await this.userService.logoutPromise();
+        this.userService.logout();
+        alert('Tu cuenta no tiene privilegios de administrador. Contacta con el SuperAdmin.');
+        this.router.navigate(['/iniciar-sesion']);
+      } else {
+        this.router.navigate(['/admin']);
+      }
+
+    } catch (error) {
+      console.error('[onLogin] Error durante el login o validación:', error);
+      this.openErrorAlert();
+    }
+
+    // this.isLoading = false;
   }
 
 
-  add(){
+  add() {
     // console.log('click')
-    let email= "a@gmail.com";
-    let password= "123456789";
-    this.userService.register(email,password);
+    let email = "a@gmail.com";
+    let password = "123456789";
+    // this.userService.register(email,password);
   }
 
   closeAlert() {
@@ -59,36 +72,36 @@ export class IniciarSesionComponent {
     this.showAlert = true;
     setTimeout(() => {
       this.closeAlert();
-    }, 4000); 
+    }, 4000);
   }
 
-  test(){
-    
-    let student ={
+  test() {
+
+    let student = {
       name: "Juan",
       message: "Quiero saber mas sobre las clases",
       contacted: "false"
     }
-    this.studentService.addStudent(student).subscribe(response=> {
+    this.studentService.addStudent(student).subscribe(response => {
       console.log(response)
     })
   }
 
 
   list() {
-    this.studentService.getAllStudents().subscribe(response=> {
+    this.studentService.getAllStudents().subscribe(response => {
       console.log(response)
     })
-  } 
+  }
   get() {
 
-  } 
+  }
   update() {
 
-  } 
+  }
   delete() {
 
-  } 
+  }
 
   sendPasswordReset() {
     if (!this.email) {

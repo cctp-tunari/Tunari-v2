@@ -21,6 +21,7 @@ import { ContactUsComponent } from './website/contact-us/contact-us.component';
 import {GastronomiaVirtualComponent} from "./website/cursos/gastronomia-virtual/gastronomia-virtual.component";
 import {RecetaFiletMignonComponent} from "./website/Recetas/receta-filet-mignon/receta-filet-mignon.component";
 import { AuthGuard } from './guard/auth.guard';
+import { SuperAdminGuard } from './guard/super-admin.guard';
 
 
 export const routes: Routes = [
@@ -49,8 +50,8 @@ export const routes: Routes = [
     path: 'admin-advanced',
     loadComponent: () =>
         import('./admin/admin-advanced/admin-advanced.component').then(
-        (m) => m.AdminAdvancedComponent
-        )
+        (m) => m.AdminAdvancedComponent),
+        canActivate: [SuperAdminGuard]
     },
     { path: 'admin',
         loadComponent: () => import('./admin/main-admin-page/main-admin-page.component')
