@@ -7,10 +7,6 @@
       [disabled]="isLoading || !isValidEmail(newAdminEmail)">Agregar</button>
   </div>
 
-  <!-- <div *ngIf="statusMessage" class="alert alert-info">
-    {{ statusMessage }}
-  </div> -->
-
   <div *ngIf="statusMessage" class="alert alert-info alert-dismissible fade show" role="alert">
     {{ statusMessage }}
     <button type="button" class="btn-close" aria-label="Close" (click)="statusMessage = ''"></button>
@@ -40,7 +36,6 @@
         </td>
         <td>{{ admin.createdAt | date: 'short' }}</td>
         <td>
-          <!-- <button class="btn btn-danger btn-sm" (click)="removeAdmin(admin.uid)">Eliminar</button> -->
           <button class="btn btn-danger btn-sm" (click)="confirmDeleteAdmin(admin.uid, admin.email)">
             Eliminar
           </button>

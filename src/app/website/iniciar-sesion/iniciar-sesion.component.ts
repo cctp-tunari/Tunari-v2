@@ -27,9 +27,6 @@ export class IniciarSesionComponent {
 
   public resetMode = false;
 
-
-
-
   constructor(private router: Router, private appComponent: AppComponent, private userService: UserService, private studentService: StudentService) { }
 
   async onLogin() {
@@ -57,13 +54,6 @@ export class IniciarSesionComponent {
   }
 
 
-  add() {
-    // console.log('click')
-    let email = "a@gmail.com";
-    let password = "123456789";
-    // this.userService.register(email,password);
-  }
-
   closeAlert() {
     this.showAlert = false;
   }
@@ -75,22 +65,8 @@ export class IniciarSesionComponent {
     }, 4000);
   }
 
-  test() {
-
-    let student = {
-      name: "Juan",
-      message: "Quiero saber mas sobre las clases",
-      contacted: "false"
-    }
-    this.studentService.addStudent(student).subscribe(response => {
-      console.log(response)
-    })
-  }
-
-
   list() {
     this.studentService.getAllStudents().subscribe(response => {
-      console.log(response)
     })
   }
   get() {

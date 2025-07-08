@@ -41,15 +41,11 @@ export class AdminService {
   async addAdminByEmail(email: string): Promise<AddAdminResult> {
     const auth = getAuth();
     const currentUser = auth.currentUser;
-
     if (!currentUser) {
       console.warn("No hay usuario autenticado");
-      // return null;
       return { success: false, message: 'Correo no encontrado en Firebase Auth' };;
     }
-
     const idToken = await currentUser.getIdToken();
-
     const url = `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${this.apiKey}`;
 
     const res = await this.http
@@ -66,23 +62,19 @@ export class AdminService {
     const uid = matchedUser?.localId;
 
     if (!uid) return { success: false, message: 'Correo no encontrado en Firebase Auth' };;
-
     const db = getDatabase();
     const adminRef = ref(db, `admins/${uid}`);
     const createdAt = Date.now();
-
     await set(adminRef, { email, createdAt });
-
     //   return uid;
     return { success: true, message: 'Admin agregado', uid };
   }
-
 
   // Eliminar un admin por UID
   async deleteAdmin(uid: string): Promise<void> {
     const adminRef = ref(this.db, `${this.adminPath}/${uid}`);
     await remove(adminRef);
   }
-  
+
 
 }
