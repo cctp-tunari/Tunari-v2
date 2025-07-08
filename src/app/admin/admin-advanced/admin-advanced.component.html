@@ -1,10 +1,25 @@
-<div class="container mt-4">
-  <h3>Gestión de Administradores</h3>
+<div class="dashboard-content container-fluid main-view">
+  <h3 class="mb-4">Gestión de Administradores</h3>
 
-  <div class="form-group my-3">
-    <input [(ngModel)]="newAdminEmail" type="email" class="form-control" placeholder="Correo del nuevo administrador" />
-    <button class="btn btn-primary mt-2" (click)="addAdmin()"
-      [disabled]="isLoading || !isValidEmail(newAdminEmail)">Agregar</button>
+  <div class="row mb-3 align-items-end">
+    <div class="col-md-6">
+      <!-- <label for="emailInput" class="form-label">Correo del nuevo administrador</label> -->
+      <input
+        id="emailInput"
+        [(ngModel)]="newAdminEmail"
+        type="email"
+        class="form-control"
+        placeholder="ej. usuario@dominio.com"
+      />
+    </div>
+    <div class="col-md-3">
+      <button
+        class="btn btn-primary w-100 mt-2"
+        (click)="addAdmin()"
+        [disabled]="isLoading || !isValidEmail(newAdminEmail)">
+        Agregar
+      </button>
+    </div>
   </div>
 
   <div *ngIf="statusMessage" class="alert alert-info alert-dismissible fade show" role="alert">
@@ -12,35 +27,40 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="statusMessage = ''"></button>
   </div>
 
-  <table class="table table-bordered table-striped mt-4">
-    <thead>
-      <tr>
-        <th>Email</th>
-        <th>Permisos Super Admin</th>
-        <th>Creado</th>
-        <th>Acción</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let admin of admins">
-        <td>{{ admin.email }}</td>
-        <!-- <td>{{ admin.uid }}</td> -->
-        <td>
-          <div class="form-check form-switch d-inline-block align-middle">
-            <input class="form-check-input" type="checkbox" [checked]="admin.superAdmin"
-              (change)="toggleSuperAdmin(admin.uid, $event)" />
-            <label class="form-check-label ms-1">
-              {{ admin.superAdmin ? 'Super' : 'Básico' }}
-            </label>
-          </div>
-        </td>
-        <td>{{ admin.createdAt | date: 'short' }}</td>
-        <td>
-          <button class="btn btn-danger btn-sm" (click)="confirmDeleteAdmin(admin.uid, admin.email)">
-            Eliminar
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Fecha de Creación</th>
+          <th>Permisos</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let admin of admins">
+          <td>{{ admin.email }}</td>
+          <td>{{ admin.createdAt | date: 'short' }}</td>
+          <td>
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [checked]="admin.superAdmin"
+                (change)="toggleSuperAdmin(admin.uid, $event)"
+              />
+              <label class="form-check-label ms-2">
+                {{ admin.superAdmin ? 'Super' : 'Básico' }}
+              </label>
+            </div>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-danger" (click)="confirmDeleteAdmin(admin.uid, admin.email)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
