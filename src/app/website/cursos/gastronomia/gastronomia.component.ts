@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef  } from '@angular/core';
 import {NgIf} from "@angular/common";
 
 @Component({
@@ -10,14 +10,22 @@ import {NgIf} from "@angular/common";
   templateUrl: './gastronomia.component.html',
   styleUrl: './gastronomia.component.scss'
 })
-export class GastronomiaComponent implements OnInit {
+export class GastronomiaComponent implements OnInit, AfterViewInit {
 
+  @ViewChild('videoRef') video!: ElementRef<HTMLVideoElement>;
   currentQuestion: number = 1;
 
   // constructor() { }
 
   ngOnInit(): void {
     // this.checkVisibility();
+  }
+
+  ngAfterViewInit(): void {
+    // Asegura que el video esté muteado desde el código
+    if (this.video?.nativeElement) {
+      this.video.nativeElement.muted = true;
+    }
   }
 
   // @HostListener('window:scroll', ['$event'])

@@ -15,8 +15,13 @@
 
 <div class="container-fluid my-5">
   <div class="row mx-5 align-items-stretch">
+    <div class="col-md-3 d-flex flex-column content-center">
+      <video #videoRef muted autoplay controls loop playsinline class="video-player">
+        <source src="/assets/gastronomia.mp4" type="video/mp4">
+      </video>
+    </div>
     <!-- Columna para la tarjeta (1/3) -->
-    <div class="col-md-4 mb-4">
+    <div class="col-md-3 mb-4">
       <div class="card">
         <div class="card-header">
           Detalles del curso
@@ -44,7 +49,7 @@
       </div>
     </div>
     <!-- Columna para los tabs (2/3) -->
-    <div class="col-md-8 d-flex flex-column">
+    <div class="col-md-6 d-flex flex-column">
       <ul class="nav nav-tabs tabs-container" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <a class="nav-link active" id="horarios-tab" data-bs-toggle="tab" href="#horarios" role="tab" aria-controls="horarios" aria-selected="true">Horarios</a>
